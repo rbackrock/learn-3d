@@ -385,7 +385,6 @@ export function orthView(gl) {
     const KEY_CODE_LEFT_ARROW = 'ArrowLeft'
     const KEY_CODE_UP_ARROW = 'ArrowUp'
     const KEY_CODE_DOWN_ARROW = 'ArrowDown'
-    console.log(evt)
 
     switch(evt.code) {
       case KEY_CODE_RIGHT_ARROW:
