@@ -1,3 +1,21 @@
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const image = new Image()
+    image.src = url
+    image.onload = function() {
+      resolve(image)
+    }
+
+    image.onerror = function(error) {
+      reject(error)
+    }
+  })
+}
+
+export {
+  loadImage
+}
+
 // 创建 program
 export function createProgramInstance(gl, vertexSource, fragmentSource) {
   const vertexShader = gl.createShader(gl.VERTEX_SHADER)
@@ -29,4 +47,19 @@ export function clientArea2CanvasCoordinate(clientX, clientY, canvasElement) {
     x,
     y
   }
+}
+
+export function loadImages(urls = []) {
+  const promises = []
+  for (let i = 0; i < urls.length; i++) {
+    promises.push(loadImage(urls[i]))
+  }
+
+  return new Promise((resolve, reject) => {
+    Promise.all(promises).then(data => {
+      resolve(data)
+    }, error => {
+      reject(error)
+    })
+  })
 }
