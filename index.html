@@ -5,11 +5,35 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./lib/cuon-matrix.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+      a {
+        text-decoration: none;
+      }
+
+      a:active,
+      a:link,
+      a:visited,
+      a:hover {
+        color: #000;
+      }
+
+      .list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      
+      .list .item {
+        padding:  20px 0;
+        flex: 0 0 20%;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <script type="module" src="/src/main.js"></script>
-    <script src="./lib/webgl-utils.js"></script>
+    <ul class="list" id="menus-hook"></ul>
+
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
