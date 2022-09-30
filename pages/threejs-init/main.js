@@ -11,14 +11,14 @@ camera.aspect = window.innerWidth / window.innerHeight
 camera.position.z = 10
 
 const controls = new OrbitControls(camera, renderer.domElement)
-const axesHelper = new THREE.AxesHelper(5);
+const axesHelper = new THREE.AxesHelper(5)
 
-scene.add(axesHelper);
+scene.add(axesHelper)
 
-const geometry = new THREE.CylinderGeometry( 1, 1, 1, 32 );
-const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-const cylinder = new THREE.Mesh( geometry, material );
-scene.add( cylinder );
+const geometry = new THREE.CylinderGeometry( 1, 1, 1, 32 )
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00} )
+const cylinder = new THREE.Mesh( geometry, material )
+scene.add( cylinder )
 
 function render() {
   renderer.render(scene, camera)
