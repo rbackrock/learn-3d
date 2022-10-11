@@ -22,6 +22,10 @@ const menus = [
   {
     name: 'webgl',
     url: '/pages/webgl/index.html'
+  },
+  {
+    name: 'babylonjs',
+    url: '/pages/babylonjs/index.html'
   }
 ]
 

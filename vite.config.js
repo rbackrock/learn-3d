@@ -12,7 +12,8 @@ export default defineConfig({
         'tank': resolve(__dirname, 'pages/tank/index.html'),
         'threejs-init': resolve(__dirname, 'pages/threejs-init/index.html'),
         'webgl': resolve(__dirname, 'pages/webgl/index.html'),
-        'demo': resolve(__dirname, 'pages/demo/index.html')
+        'demo': resolve(__dirname, 'pages/demo/index.html'),
+        'babylonjs': resolve(__dirname, 'pages/babylonjs/index.html')
       }
     }
   }
