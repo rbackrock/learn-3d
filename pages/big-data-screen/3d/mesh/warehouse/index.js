@@ -31,7 +31,7 @@ export default function createWarehouse() {
           modifyShader(item)
 
           const line = makeBorderLine(item.geometry)
-          root.add(line)
+          // root.add(line)
         }
       })
 
