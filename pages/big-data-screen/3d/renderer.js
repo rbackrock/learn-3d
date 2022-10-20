@@ -1,8 +1,13 @@
-import * as THREE from "three"
+import * as THREE from 'three'
+import {
+  getCanvasWidthAndHeightAndSelf
+} from './helper'
 
-const canvas = document.querySelector('#canvas-3d')
-canvas.width = canvas.offsetWidth
-canvas.height = canvas.offsetHeight
+const {
+  canvas
+} = getCanvasWidthAndHeightAndSelf()
+canvas.width = canvas.parentElement.offsetWidth
+canvas.height = canvas.parentElement.offsetHeight
 
 const renderer = new THREE.WebGLRenderer({
   canvas,

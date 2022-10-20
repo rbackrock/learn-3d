@@ -1,6 +1,11 @@
 import * as THREE from 'three'
+import {
+  getCanvasWidthAndHeightAndSelf
+} from './helper'
 
-const canvas = document.querySelector('#canvas-3d')
+const {
+  canvas
+} = getCanvasWidthAndHeightAndSelf()
 const width = canvas.offsetWidth
 const height = canvas.offsetHeight
 
