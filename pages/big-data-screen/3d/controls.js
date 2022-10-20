@@ -1,15 +1,11 @@
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import camera from './camera'
 import {
-  getCanvasWidthAndHeightAndSelf
-} from './helper'
-import labelRenderer from './cssRenderer'
+  OrbitControls
+} from 'three/examples/jsm/controls/OrbitControls'
+import camera from './camera'
+import renderer from './renderer'
 
-const {
-  canvas
-} = getCanvasWidthAndHeightAndSelf()
-const controls = new OrbitControls(camera, labelRenderer.domElement)
-
+const controls = new OrbitControls(camera, renderer.domElement)
+// 不能看到仓库底部
 controls.maxPolarAngle = Math.PI / 180 * 90
 
 export default controls

@@ -17,5 +17,6 @@ labelRenderer.domElement.style.position = 'absolute';
 labelRenderer.domElement.style.top = '0px';
 labelRenderer.domElement.style.left = '0px';
 labelRenderer.domElement.style.zIndex = '9';
+labelRenderer.domElement.style.pointerEvents = 'none'
 
 export default labelRenderer

@@ -11,3 +11,4 @@ const wareHouse = await createWarehouse()
 scene.add(axesHelper)
 scene.add(wareHouse)
 scene.add(floor)
+

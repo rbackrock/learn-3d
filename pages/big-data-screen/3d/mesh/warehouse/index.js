@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import modifyShader from './shader'
+import makeWarehouseLabel from './makeLabel'
 
 // 创建模型颜色 - 纯色
 function makeSolidColorMaterial() {
@@ -32,6 +33,8 @@ export default function createWarehouse() {
 
           const line = makeBorderLine(item.geometry)
           // root.add(line)
+
+          root.add(makeWarehouseLabel(1, '1-1-1', '仓库1'))
         }
       })
 
