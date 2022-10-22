@@ -10,7 +10,7 @@ export default function(id, serialNumber, name) {
   `
 
   const warehouseLabel = new CSS2DObject(warehouseInfoElement)
-  warehouseLabel.position.set(0, 10, 0)
+  warehouseLabel.position.set(0, 4, 0)
 
   warehouseInfoElement.addEventListener('click', evt => {
     console.log('abc')

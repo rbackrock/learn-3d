@@ -4,6 +4,7 @@ import labelRenderer from './cssRenderer'
 import {
   getCanvasWidthAndHeightAndSelf
 } from './helper'
+import unrealBloomRender from './postprocessing/unreal-bloom'
 
 export default function resize() {
   const {
@@ -20,4 +21,6 @@ export default function resize() {
   renderer.setPixelRatio(window.devicePixelRatio)
 
   labelRenderer.setSize(width, height)
+
+  unrealBloomRender.setSize(width, height)
 }

@@ -15,7 +15,7 @@ export default function modifyShader(mesh) {
     `
     )
 
-    addGradientColor(shader, '#1dc7ff', modelHeight)
+    addGradientColor(shader, '#b5b8ff', modelHeight)
     addToTopLine(shader)
   }
 }
@@ -61,8 +61,8 @@ export function addGradientColor(shader, topColor = '#ffffff', modelHeight) {
       #include <dithering_fragment>
       vec4 gradientColor = gl_FragColor;
 
-      // float gradMix = (vPosition.y + uHeight / 2.0) / uHeight;
-      float gradMix = vPosition.y / uHeight;
+      float gradMix = (vPosition.y + uHeight / 2.0) / uHeight;
+      // float gradMix = vPosition.y / uHeight;
       vec3 gradMixColor = mix(gradientColor.xyz, uTopColor, gradMix);
       gl_FragColor = vec4(gradMixColor, 1.0);
     `
@@ -74,7 +74,7 @@ export function addToTopLine(shader) {
   //   扩散的时间
   shader.uniforms.uToTopTime = { value: 0 }
   //   设置条带的宽度
-  shader.uniforms.uToTopWidth = { value: 6 }
+  shader.uniforms.uToTopWidth = { value: 0.02 }
 
   shader.fragmentShader = shader.fragmentShader.replace(
     '#include <common>',
@@ -93,8 +93,8 @@ export function addToTopLine(shader) {
       float ToTopMix = -(vPosition.y - uToTopTime) * (vPosition.y - uToTopTime) + uToTopWidth;
 
       if(ToTopMix > 0.0){
-          gl_FragColor = mix(gl_FragColor, vec4(0.8, 0.8, 1, 1), ToTopMix / uToTopWidth);
-          
+          // gl_FragColor = mix(gl_FragColor, vec4(0.05, 0.56, 0.97, 0.3), ToTopMix / uToTopWidth);
+          gl_FragColor = mix(gl_FragColor, vec4(1, 1, 1, 0.6), ToTopMix / uToTopWidth);
       }
 
       //#end#
