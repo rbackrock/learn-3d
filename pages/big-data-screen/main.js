@@ -49,8 +49,8 @@ function addWareHouseAndFloor(scene, wareHouseDataList) {
   const wareHouseWidth = 5
   const wareHouseHeight = 8
   const listGroupNum = 4
-  const wareHouse = createWarehouse(listData, listGroupNum, wareHouseWidth, wareHouseHeight)
-  const floor = createFloor(listData, listGroupNum, wareHouseWidth, wareHouseHeight)
+  const wareHouse = createWarehouse(wareHouseDataList, listGroupNum, wareHouseWidth, wareHouseHeight)
+  const floor = createFloor(wareHouseDataList, listGroupNum, wareHouseWidth, wareHouseHeight)
 
   scene.add(wareHouse)
   scene.add(floor)
