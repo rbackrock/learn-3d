@@ -62,7 +62,7 @@ export function createWarehouse(listData, groupNum = 4, width, height, gap = 3) 
       const warehouse = new THREE.Group()
       warehouse.add(buildingBodyMesh)
       warehouse.add(buildingTopMesh)
-      warehouse.add(makeWarehouseLabel(1, '1-1-1', '仓库1'))
+      warehouse.add(makeWarehouseLabel(currentWarehouseData))
 
       warehouse.position.set(
         n * WIDTH + OFFSET_WIDTH + n * GAP,
@@ -82,6 +82,8 @@ export function createWarehouse(listData, groupNum = 4, width, height, gap = 3) 
     0,
     -(maxRows * HEIGHT + (maxRows - 1) * GAP) / 2,
   )
+  
+  warehouseGroup.name = 'warehouseGroup'
 
   return warehouseGroup
 }
