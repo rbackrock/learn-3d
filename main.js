@@ -26,6 +26,10 @@ const menus = [
   {
     name: 'babylonjs',
     url: '/pages/babylonjs/index.html'
+  },
+  {
+    name: 'home-3d',
+    url: '/pages/home-3d/index.html'
   }
 ]
 
