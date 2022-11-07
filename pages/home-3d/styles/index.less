@@ -1,11 +1,284 @@
+@media (min-width: 1300px) {
+  .canvas-3d-container {
+    font-size: 14px
+  }
+}
+
+@media (min-width: 1900px) {
+  .canvas-3d-container {
+    font-size: 16px
+  }
+}
+
+@font-face {
+    font-family: datetime;
+    src: url(/fonts/DIN-BOLD.OTF);
+}
+
+@font-face {
+  font-family: textFont;
+  src: url(/fonts/PANGMENZHENGDAOBIAOTITI-1.TTF);
+}
+
+@keyframes breath {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
 .canvas-3d-container {
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 0;
-}
 
-.canvas-3d-container .canvas-container {
-  width: 100%;
-  height: 100%;
+  .canvas-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .date-container {
+    position: absolute;
+    top: 2%;
+    right: 13%;
+    // color: #ffffff;
+    transform: rotate(355deg);
+    font-family: datetime;
+
+    .date-container-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+
+      .time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        font-size: 2.6em;
+
+        .time-wrapper {
+          .time-text {
+            background-image: linear-gradient(#ffffff, #90e9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+        }
+      }
+
+      .date {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+
+        .date-wrapper {
+          .date-text {
+            background-image: linear-gradient(#ffffff, #90e9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+
+          .week-text {
+            background-image: linear-gradient(#ffffff, #90e9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .name-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: textFont;
+    transform: translate(-50%, -80%);
+
+    .sign-container {
+      position: relative;
+      width: 376px;
+      height: 360px;
+
+      .sign {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/home-3d/sign.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        &.copy {
+          animation: breath 1.6s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: normal;
+        }
+      }
+    }
+
+    .text-container {
+      .text-container-wrapper {
+        .text {
+          letter-spacing: 10px;
+          font-size: 4em;
+          text-align: center;
+          background-image: linear-gradient(#ffffff, #90e9ff);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+        }
+      }
+    }
+  }
+
+  .nav-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #ffffff;
+    transform: translate(-50%, 124%);
+    color: #ffffff;
+
+    .nav-container-wrapper {
+      .list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        .item {
+          padding: 0 40px;
+
+          .item-wrapper {
+            cursor: pointer;
+
+            .icon {
+              width: 150px;
+              height: 150px;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: contain;
+            }
+
+            .text {
+              padding: 10px 0;
+
+              .text-wrapper {
+                text-align: center;
+                font-size: 1.6em;
+                font-family: textFont;
+                letter-spacing: 2px;
+              }
+            }
+          }
+
+          &.fw {
+            transform: translateY(-10%);
+
+            .icon {
+              background-image: url(/home-3d/buttons/fw.png);
+            }
+          }
+
+          &.gh {
+            transform: translateY(-2%);
+
+            .icon {
+              background-image: url(/home-3d/buttons/gh.png);
+            }
+          }
+
+          &.sc {
+            .icon {
+              background-image: url(/home-3d/buttons/sc.png);
+            }
+          }
+
+          &.jg {
+            transform: translateY(-2%);
+
+            .icon {
+              background-image: url(/home-3d/buttons/jg.png);
+            }
+          }
+
+          &.yx {
+            transform: translateY(-10%);
+
+            .icon {
+              background-image: url(/home-3d/buttons/yx.png);
+            }
+          }
+
+          &.fw:hover {
+            .icon {
+              background-image: url(/home-3d/buttons/fw-active.png);
+            }
+
+            .text-wrapper {
+              text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+            }
+          }
+
+          &.gh:hover {
+            .icon {
+              background-image: url(/home-3d/buttons/gh-active.png);
+            }
+
+            .text-wrapper {
+              text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+            }
+          }
+
+          &.sc:hover {
+            .icon {
+              background-image: url(/home-3d/buttons/sc-active.png);
+            }
+
+            .text-wrapper {
+              text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+            }
+          }
+
+          &.jg:hover {
+            .icon {
+              background-image: url(/home-3d/buttons/jg-active.png);
+            }
+
+            .text-wrapper {
+              text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+            }
+          }
+
+          &.yx:hover {
+            .icon {
+              background-image: url(/home-3d/buttons/yx-active.png);
+            }
+
+            .text-wrapper {
+              text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,10 +1,214 @@
+@media (min-width: 1300px) {
+  .canvas-3d-container {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1900px) {
+  .canvas-3d-container {
+    font-size: 16px;
+  }
+}
+@font-face {
+  font-family: datetime;
+  src: url(/fonts/DIN-BOLD.OTF);
+}
+@font-face {
+  font-family: textFont;
+  src: url(/fonts/PANGMENZHENGDAOBIAOTITI-1.TTF);
+}
+@keyframes breath {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
 .canvas-3d-container {
   position: relative;
   width: 100%;
   height: 100%;
-  font-size: 0;
 }
 .canvas-3d-container .canvas-container {
   width: 100%;
   height: 100%;
+  display: block;
+}
+.canvas-3d-container .date-container {
+  position: absolute;
+  top: 2%;
+  right: 13%;
+  transform: rotate(355deg);
+  font-family: datetime;
+}
+.canvas-3d-container .date-container .date-container-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.canvas-3d-container .date-container .date-container-wrapper .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 2.6em;
+}
+.canvas-3d-container .date-container .date-container-wrapper .time .time-wrapper .time-text {
+  background-image: linear-gradient(#ffffff, #90e9ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.canvas-3d-container .date-container .date-container-wrapper .date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+}
+.canvas-3d-container .date-container .date-container-wrapper .date .date-wrapper .date-text {
+  background-image: linear-gradient(#ffffff, #90e9ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.canvas-3d-container .date-container .date-container-wrapper .date .date-wrapper .week-text {
+  background-image: linear-gradient(#ffffff, #90e9ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.canvas-3d-container .name-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: textFont;
+  transform: translate(-50%, -80%);
+}
+.canvas-3d-container .name-container .sign-container {
+  position: relative;
+  width: 376px;
+  height: 360px;
+}
+.canvas-3d-container .name-container .sign-container .sign {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(/home-3d/sign.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.canvas-3d-container .name-container .sign-container .sign.copy {
+  animation: breath 1.6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+.canvas-3d-container .name-container .text-container .text-container-wrapper .text {
+  letter-spacing: 10px;
+  font-size: 4em;
+  text-align: center;
+  background-image: linear-gradient(#ffffff, #90e9ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.canvas-3d-container .nav-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 124%);
+  color: #ffffff;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item {
+  padding: 0 40px;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item .item-wrapper {
+  cursor: pointer;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item .item-wrapper .icon {
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item .item-wrapper .text {
+  padding: 10px 0;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item .item-wrapper .text .text-wrapper {
+  text-align: center;
+  font-size: 1.6em;
+  font-family: textFont;
+  letter-spacing: 2px;
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.fw {
+  transform: translateY(-10%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.fw .icon {
+  background-image: url(/home-3d/buttons/fw.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.gh {
+  transform: translateY(-2%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.gh .icon {
+  background-image: url(/home-3d/buttons/gh.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.sc .icon {
+  background-image: url(/home-3d/buttons/sc.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.jg {
+  transform: translateY(-2%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.jg .icon {
+  background-image: url(/home-3d/buttons/jg.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.yx {
+  transform: translateY(-10%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.yx .icon {
+  background-image: url(/home-3d/buttons/yx.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.fw:hover .icon {
+  background-image: url(/home-3d/buttons/fw-active.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.fw:hover .text-wrapper {
+  text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.gh:hover .icon {
+  background-image: url(/home-3d/buttons/gh-active.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.gh:hover .text-wrapper {
+  text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.sc:hover .icon {
+  background-image: url(/home-3d/buttons/sc-active.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.sc:hover .text-wrapper {
+  text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.jg:hover .icon {
+  background-image: url(/home-3d/buttons/jg-active.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.jg:hover .text-wrapper {
+  text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.yx:hover .icon {
+  background-image: url(/home-3d/buttons/yx-active.png);
+}
+.canvas-3d-container .nav-container .nav-container-wrapper .list .item.yx:hover .text-wrapper {
+  text-shadow: 0px 0px 9px hsl(44, 100%, 50%);
 }

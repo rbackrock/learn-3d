@@ -16,7 +16,7 @@ export async function run() {
 
   // 添加地球
   let earth = await createEarth()
-  earth.group.position.set(0, 30, 0)
+  earth.group.position.set(0, 26, 0)
   scene.add(earth.group)
   
 
