@@ -30,6 +30,10 @@ const menus = [
   {
     name: 'home-3d',
     url: '/pages/home-3d/index.html'
+  },
+  {
+    name: 'threejs-init-class',
+    url: '/pages/threejs-init-class/index.html'
   }
 ]
 
