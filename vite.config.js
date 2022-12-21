@@ -13,7 +13,6 @@ export default defineConfig({
         'threejs-init': resolve(__dirname, 'pages/threejs-init/index.html'),
         'webgl': resolve(__dirname, 'pages/webgl/index.html'),
         'demo': resolve(__dirname, 'pages/demo/index.html'),
-        'babylonjs': resolve(__dirname, 'pages/babylonjs/index.html'),
         'home-3d': resolve(__dirname, 'pages/home-3d/index.html'),
         'threejs-init-class': resolve(__dirname, 'pages/threejs-init-class/index.html'),
         'warehouse': resolve(__dirname, 'pages/warehouse/index.html')
