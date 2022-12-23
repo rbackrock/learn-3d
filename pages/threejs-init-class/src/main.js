@@ -1,7 +1,3 @@
-import World from './World/World'
+import Experience from './Experience/Experience.js'
 
-const world = new World({
-  containerElement: document.querySelector('#canvas-3d')
-})
-
-window.addEventListener('resize', world.resize.bind(world))
+const experience = new Experience(document.querySelector('canvas.webgl'))
