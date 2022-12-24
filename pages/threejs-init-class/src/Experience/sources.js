@@ -25,6 +25,6 @@ export default [
     {
         name: 'foxModel',
         type: 'gltfModel',
-        path: '/threejs-class/static/models/Fox/glTF/Fox.gltf'
+        path: '/threejs-class/static/models/Fox/glTF-Binary/Fox.glb'
     }
 ]

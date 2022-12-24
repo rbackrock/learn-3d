@@ -1,38 +1,30 @@
 const menus = [
   {
-    name: 'big-data-screen',
+    name: '动态生成房屋',
     url: '/pages/big-data-screen/index.html'
   },
   {
-    name: 'demo',
+    name: 'threejs初始化',
     url: '/pages/demo/index.html'
   },
   {
-    name: 'learn-shader',
+    name: 'shader试验田',
     url: '/pages/learn-shader/index.html'
   },
   {
-    name: 'tank',
+    name: 'threejs坦克案例',
     url: '/pages/tank/index.html'
-  },
-  {
-    name: 'threejs-init',
-    url: '/pages/threejs-init/index.html'
-  },
-  {
-    name: 'webgl',
-    url: '/pages/webgl/index.html'
   },
   {
     name: 'home-3d',
     url: '/pages/home-3d/index.html'
   },
   {
-    name: 'threejs-init-class',
+    name: 'threejs初始化Class风格',
     url: '/pages/threejs-init-class/index.html'
   },
   {
-    name: 'warehouse',
+    name: '线框风格仓库',
     url: '/pages/warehouse/index.html'
   }
 ]

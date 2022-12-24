@@ -10,8 +10,6 @@ export default defineConfig({
         'big-data-screen': resolve(__dirname, 'pages/big-data-screen/index.html'),
         'shader': resolve(__dirname, 'pages/learn-shader/index.html'),
         'tank': resolve(__dirname, 'pages/tank/index.html'),
-        'threejs-init': resolve(__dirname, 'pages/threejs-init/index.html'),
-        'webgl': resolve(__dirname, 'pages/webgl/index.html'),
         'demo': resolve(__dirname, 'pages/demo/index.html'),
         'home-3d': resolve(__dirname, 'pages/home-3d/index.html'),
         'threejs-init-class': resolve(__dirname, 'pages/threejs-init-class/index.html'),
