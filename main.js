@@ -26,6 +26,10 @@ const menus = [
   {
     name: '线框风格仓库',
     url: '/pages/warehouse/index.html'
+  },
+  {
+    name: '练习1',
+    url: '/pages/exercise1/index.html'
   }
 ]
 
