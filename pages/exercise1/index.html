@@ -7,10 +7,24 @@
   <title>Document</title>
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <link rel="stylesheet" href="/style.css">
+  <style>
+    .loading {
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      padding: 10px 30px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+  </style>
 </head>
 <body>
   <canvas class="webgl"></canvas>
 
   <script type="module" src="./src/main.js"></script>
+
+  <div class="loading" id="loading">资源加载中...</div>
 </body>
 </html>

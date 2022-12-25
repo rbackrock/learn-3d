@@ -4,12 +4,18 @@ import * as dat from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-const gltfLoader = new GLTFLoader()
-const dracoLoader = new DRACOLoader()
+const loadingManager = new THREE.LoadingManager()
+loadingManager.onLoad = () => {
+    document.querySelector('#loading').style.display = 'none'
+}
+const gltfLoader = new GLTFLoader(loadingManager)
+const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath('/draco/')
 gltfLoader.setDRACOLoader(dracoLoader)
 
-const cubeTextureLoader = new THREE.CubeTextureLoader()
+
+
+const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
 
 // const gui = new dat.GUI()
 const debugObject = {}
@@ -53,15 +59,6 @@ gltfLoader.load(
         gltf.scene.position.set(0, - 4, 0)
         gltf.scene.rotation.y = Math.PI * 0.5
 
-        // ---
-        // gltf.scene.traverse(mesh => {
-        //   if (mesh.isMesh) {
-        //     mesh.material.emissive =  mesh.material.color;
-        //     mesh.material.emissiveMap = mesh.material.map ;
-        //   }
-        // })
-        // ---
-
         scene.add(gltf.scene)
 
         // gui.add(gltf.scene.rotation, 'y').min(- Math.PI).max(Math.PI).step(0.001).name('rotation')
@@ -69,18 +66,6 @@ gltfLoader.load(
         updateAllMaterials()
     }
 )
-
-// gltfLoader.load(
-//     '/models/hamburger.glb',
-//     (gltf) =>
-//     {
-//         gltf.scene.scale.set(0.3, 0.3, 0.3)
-//         gltf.scene.position.set(0, - 1, 0)
-//         scene.add(gltf.scene)
-
-//         updateAllMaterials()
-//     }
-// )
 
 const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
 directionalLight.castShadow = true
