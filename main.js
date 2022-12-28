@@ -30,6 +30,10 @@ const menus = [
   {
     name: '练习1',
     url: '/pages/exercise1/index.html'
+  },
+  {
+    name: '练习2',
+    url: '/pages/exercise2/index.html'
   }
 ]
 
