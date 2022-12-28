@@ -203,28 +203,21 @@ const portalFragmentShader = `
   }
 
   void main() {
-    // float strength = cnoise(vec3(vUv * 5.0, uTime));
-    // gl_FragColor = vec4(strength, strength, strength, 1.0);
-      // Displace the UV
     vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
 
-    // Perlin noise
     float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.2));
 
     gl_FragColor = vec4(strength, strength, strength, 1.0);
 
-    // Outer glow
     float outerGlow = distance(vUv, vec2(0.5)) * 5.0 - 1.4;
     strength += outerGlow;
 
     gl_FragColor = vec4(strength, strength, strength, 1.0);
 
-    // Apply cool step
     strength += step(- 0.2, strength) * 0.8;
 
     vec3 color = mix(uColorStart, uColorEnd, strength);
     gl_FragColor = vec4(color, 1.0);
-    // gl_FragColor = vec4(strength, strength, strength, 1.0);
   }
 `
 
@@ -262,9 +255,6 @@ gltfLoader.load('http://cdn.rback.fun/learn-bake/learn-bake-fix.glb', gltf => {
   }
 )
 
-/**
- * Camera
- */
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
 setCamera(camera, sizes)
 scene.add(camera)
@@ -283,7 +273,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.outputEncoding = THREE.sRGBEncoding
 
 /**
- * 以 iPhone12 大概比划的相机位置
+ * 大概比划横屏或者竖屏时相机的位置
  */
 function setCamera(camera, { width, height }) {
   if (width > height) {
