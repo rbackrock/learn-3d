@@ -207,6 +207,7 @@ const portalFragmentShader = `
 `
 
 const portalLightMaterial = new THREE.ShaderMaterial({
+  side: THREE.DoubleSide,
   vertexShader: portalVertexShader,
   fragmentShader: portalFragmentShader,
   // 每帧花费时间用作动画
