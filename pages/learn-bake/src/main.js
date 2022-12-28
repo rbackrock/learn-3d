@@ -121,6 +121,8 @@ const portalVertexShader = `
 const portalFragmentShader = `
   varying vec2 vUv;
   uniform float uTime;
+  uniform vec3 uColorStart;
+  uniform vec3 uColorEnd;
 
   // 抄来的公式方法
   //	Classic Perlin 3D Noise 
@@ -201,8 +203,28 @@ const portalFragmentShader = `
   }
 
   void main() {
-    float strength = cnoise(vec3(vUv * 5.0, uTime));
+    // float strength = cnoise(vec3(vUv * 5.0, uTime));
+    // gl_FragColor = vec4(strength, strength, strength, 1.0);
+      // Displace the UV
+    vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
+
+    // Perlin noise
+    float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.2));
+
     gl_FragColor = vec4(strength, strength, strength, 1.0);
+
+    // Outer glow
+    float outerGlow = distance(vUv, vec2(0.5)) * 5.0 - 1.4;
+    strength += outerGlow;
+
+    gl_FragColor = vec4(strength, strength, strength, 1.0);
+
+    // Apply cool step
+    strength += step(- 0.2, strength) * 0.8;
+
+    vec3 color = mix(uColorStart, uColorEnd, strength);
+    gl_FragColor = vec4(color, 1.0);
+    // gl_FragColor = vec4(strength, strength, strength, 1.0);
   }
 `
 
@@ -214,6 +236,12 @@ const portalLightMaterial = new THREE.ShaderMaterial({
   uniforms: {
     uTime: {
       value: 0
+    },
+    uColorStart: {
+      value: new THREE.Color(0xffffff)
+    },
+    uColorEnd: {
+      value: new THREE.Color(0x2abaff)
     }
   }
 })
