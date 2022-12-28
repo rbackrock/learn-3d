@@ -24,7 +24,8 @@ gltfLoader.setDRACOLoader(dracoLoader)
 /**
  * 纹理
  */
-const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
+// const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
+const bakedTexture = textureLoader.load('http://cdn.rback.fun/learn-bake/bake.jpg')
 bakedTexture.flipY = false
 bakedTexture.encoding = THREE.sRGBEncoding
 
@@ -34,7 +35,8 @@ bakedTexture.encoding = THREE.sRGBEncoding
 const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture })
 
 
-gltfLoader.load('/learn-bake/learn-bake.glb', gltf => {
+// gltfLoader.load('/learn-bake/learn-bake.glb', gltf => {
+gltfLoader.load('http://cdn.rback.fun/learn-bake/learn-bake.glb', gltf => {
     gltf.scene.traverse((child) => {
       child.material = bakedMaterial
     })
