@@ -28,6 +28,10 @@ const menus = [
     url: '/pages/warehouse/index.html'
   },
   {
+    name: '烘焙',
+    url: '/pages/learn-bake/index.html'
+  },
+  {
     name: '练习1',
     url: '/pages/exercise1/index.html'
   },
