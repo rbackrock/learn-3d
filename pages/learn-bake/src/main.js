@@ -25,7 +25,7 @@ const textureLoader = new THREE.TextureLoader(loadingManager)
 // 模型压缩加载器
 const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath('/draco/')
-// 模型j卡再起
+// 模型加载器
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
 
@@ -34,7 +34,7 @@ gltfLoader.setDRACOLoader(dracoLoader)
  */
 // const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
 const bakedTexture = textureLoader.load('http://cdn.rback.fun/learn-bake/bake.jpg')
-// 蛋疼，threejs 向上是 Y 坐标，blender 是 z 坐标
+// 蛋疼，threejs 向上是 Y 坐标，blender 是 z 坐标，烘焙的纹理需要修正
 bakedTexture.flipY = false
 bakedTexture.encoding = THREE.sRGBEncoding
 
