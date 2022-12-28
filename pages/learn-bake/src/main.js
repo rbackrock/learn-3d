@@ -203,16 +203,15 @@ const portalFragmentShader = `
   }
 
   void main() {
-    vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.1));
+    vec2 displacedUv = vUv + cnoise(vec3(vUv * 5.0, uTime * 0.5));
+    float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.6));
 
-    float strength = cnoise(vec3(displacedUv * 5.0, uTime * 0.2));
-
-    gl_FragColor = vec4(strength, strength, strength, 1.0);
+    // gl_FragColor = vec4(strength, strength, strength, 1.0);
 
     float outerGlow = distance(vUv, vec2(0.5)) * 5.0 - 1.4;
     strength += outerGlow;
 
-    gl_FragColor = vec4(strength, strength, strength, 1.0);
+    // gl_FragColor = vec4(strength, strength, strength, 1.0);
 
     strength += step(- 0.2, strength) * 0.8;
 
