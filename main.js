@@ -38,6 +38,10 @@ const menus = [
   {
     name: '练习2',
     url: '/pages/exercise2/index.html'
+  },
+  {
+    name: '传送带',
+    url: '/pages/conveyor-belt/index.html'
   }
 ]
 

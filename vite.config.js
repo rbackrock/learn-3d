@@ -15,7 +15,8 @@ export default defineConfig({
         'threejs-init-class': resolve(__dirname, 'pages/threejs-init-class/index.html'),
         'warehouse': resolve(__dirname, 'pages/warehouse/index.html'),
         'exercise1': resolve(__dirname, 'pages/exercise1/index.html'),
-        'learn-bake': resolve(__dirname, 'pages/learn-bake/index.html')
+        'learn-bake': resolve(__dirname, 'pages/learn-bake/index.html'),
+        'learn-bake': resolve(__dirname, 'pages/conveyor-belt/index.html')
       }
     }
   }
