@@ -16,7 +16,7 @@ export default defineConfig({
         'warehouse': resolve(__dirname, 'pages/warehouse/index.html'),
         'exercise1': resolve(__dirname, 'pages/exercise1/index.html'),
         'learn-bake': resolve(__dirname, 'pages/learn-bake/index.html'),
-        'learn-bake': resolve(__dirname, 'pages/conveyor-belt/index.html')
+        'conveyor-belt': resolve(__dirname, 'pages/conveyor-belt/index.html')
       }
     }
   }
