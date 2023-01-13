@@ -6,7 +6,7 @@ import Camera from './Camera'
 import Renderer from './Renderer'
 import World from './World/World'
 import Resources from './Utils/Resources'
-import OutLinePostprocessing from './Postprocessing/Outline'
+import OutLinePostprocessing from './Postprocessing/OutLinePostprocessing'
 
 import sources from './sources'
 
