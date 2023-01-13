@@ -24,6 +24,10 @@ const menus = [
     url: '/pages/threejs-init-class/index.html'
   },
   {
+    name: '小狐狸',
+    url: '/pages/fox/index.html'
+  },
+  {
     name: '线框风格仓库',
     url: '/pages/warehouse/index.html'
   },
@@ -36,13 +40,13 @@ const menus = [
     url: '/pages/exercise1/index.html'
   },
   {
-    name: '练习2',
-    url: '/pages/exercise2/index.html'
-  },
-  {
     name: '传送带',
     url: '/pages/conveyor-belt/index.html'
-  }
+  },
+  {
+    name: '工厂 Demo',
+    url: '/pages/factory-demo-1/index.html'
+  },
 ]
 
 for (let i = 0; i < menus.length; i++) {

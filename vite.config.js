@@ -13,10 +13,12 @@ export default defineConfig({
         'demo': resolve(__dirname, 'pages/demo/index.html'),
         'home-3d': resolve(__dirname, 'pages/home-3d/index.html'),
         'threejs-init-class': resolve(__dirname, 'pages/threejs-init-class/index.html'),
+        'fox': resolve(__dirname, 'pages/fox/index.html'),
         'warehouse': resolve(__dirname, 'pages/warehouse/index.html'),
         'exercise1': resolve(__dirname, 'pages/exercise1/index.html'),
         'learn-bake': resolve(__dirname, 'pages/learn-bake/index.html'),
-        'conveyor-belt': resolve(__dirname, 'pages/conveyor-belt/index.html')
+        'conveyor-belt': resolve(__dirname, 'pages/conveyor-belt/index.html'),
+        'factory-demo-1': resolve(__dirname, 'pages/factory-demo-1/index.html'),
       }
     }
   }
