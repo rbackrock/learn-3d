@@ -5,6 +5,7 @@ export default class box {
   constructor() {
     this.threeWorld = new ThreeWorld()
     this.scene = this.threeWorld.scene
+    this.outLinePostprocessing = this.threeWorld.outLinePostprocessing
     this.debug = this.threeWorld.debug
 
     const geometry = new THREE.BoxGeometry(1, 1, 1)
@@ -13,6 +14,8 @@ export default class box {
     })
     this.box = new THREE.Mesh(geometry, material)
     this.scene.add(this.box)
+
+    this.outLinePostprocessing.outlinePass.selectedObjects = [this.box]
 
     this.setDebug()
   }
