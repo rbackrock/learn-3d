@@ -5,9 +5,10 @@ import Sizes from './Utils/Sizes'
 import Camera from './Camera'
 import Renderer from './Renderer'
 import World from './World/World'
-import Resources from './Utils/Resources.js'
+import Resources from './Utils/Resources'
+import OutLinePostprocessing from './Postprocessing/Outline'
 
-import sources from './sources.js'
+import sources from './sources'
 
 let instance = null
 
@@ -34,6 +35,9 @@ export class ThreeWorld {
     this.camera = new Camera()
     this.renderer = new Renderer()
 
+    // 后期处理
+    this.outLinePostprocessing = new OutLinePostprocessing()
+
     // world
     this.wolrd = new World()
 
@@ -53,7 +57,9 @@ export class ThreeWorld {
 
   update() {
     this.camera.update()
-    this.renderer.update()
+    // this.renderer.update()
+    this.outLinePostprocessing.composer.render()
+    // console.log(this.outLinePostprocessing)
   }
 
   destroy() {
