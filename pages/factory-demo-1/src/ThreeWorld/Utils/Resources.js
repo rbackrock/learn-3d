@@ -40,7 +40,7 @@ export default class Resources extends EventEmitter {
 
     manager.onLoad = () => {
       this.closeLoadingTips()
-      this.trigger('load', this.items)
+      this.trigger('load', [this.items])
     }
 
     manager.onProgress = (url, itemsLoaded, itemsTotal) => {

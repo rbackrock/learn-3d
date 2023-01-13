@@ -16,7 +16,6 @@ export default class OutLinePostprocessing {
   }
 
   create() {
-    console.log(this.renderer)
     this.composer = new EffectComposer(this.renderer.instance)
     const renderPass = new RenderPass(this.scene, this.camera.instance)
     this.composer.addPass(renderPass)
