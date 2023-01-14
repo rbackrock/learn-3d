@@ -4,27 +4,27 @@ export default [
         type: 'cubeTexture',
         path:
         [
-            '/threejs-class/static/textures/environmentMap/px.jpg',
-            '/threejs-class/static/textures/environmentMap/nx.jpg',
-            '/threejs-class/static/textures/environmentMap/py.jpg',
-            '/threejs-class/static/textures/environmentMap/ny.jpg',
-            '/threejs-class/static/textures/environmentMap/pz.jpg',
-            '/threejs-class/static/textures/environmentMap/nz.jpg'
+            '/fox/static/textures/environmentMap/px.jpg',
+            '/fox/static/textures/environmentMap/nx.jpg',
+            '/fox/static/textures/environmentMap/py.jpg',
+            '/fox/static/textures/environmentMap/ny.jpg',
+            '/fox/static/textures/environmentMap/pz.jpg',
+            '/fox/static/textures/environmentMap/nz.jpg'
         ]
     },
     {
         name: 'grassColorTexture',
         type: 'texture',
-        path: '/threejs-class/static/textures/dirt/color.jpg'
+        path: '/fox/static/textures/dirt/color.jpg'
     },
     {
         name: 'grassNormalTexture',
         type: 'texture',
-        path: '/threejs-class/static/textures/dirt/normal.jpg'
+        path: '/fox/static/textures/dirt/normal.jpg'
     },
     {
         name: 'foxModel',
         type: 'gltfModel',
-        path: '/threejs-class/static/models/Fox/glTF-Binary/Fox.glb'
+        path: '/fox/static/models/Fox/glTF-Binary/Fox.glb'
     }
 ]

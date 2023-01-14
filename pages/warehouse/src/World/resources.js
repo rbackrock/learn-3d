@@ -10,7 +10,7 @@ const assets = {
   objectModel: [
     {
       name: 'warehouse',
-      url: '/models/test/4.obj'
+      url: '/warehouse/models/warehouse.obj'
     }
   ]
 }

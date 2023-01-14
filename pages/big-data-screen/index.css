@@ -16,7 +16,7 @@
   height: 100%;
 }
 .three-label-container .three-label-container-wrapper .title-container {
-  background-image: url('/images/3d-label/text-box.svg#svgView(preserveAspectRatio(none))');
+  background-image: url('/big-data-screen/3d-label/text-box.svg#svgView(preserveAspectRatio(none))');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -41,7 +41,7 @@
   width: 60px;
   height: 60px;
   margin: 0 auto;
-  background-image: url('/images/3d-label/fan-part1.svg#svgView(preserveAspectRatio(none))');
+  background-image: url('/big-data-screen/3d-label/fan-part1.svg#svgView(preserveAspectRatio(none))');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
@@ -62,7 +62,7 @@
 .three-label-container .three-label-container-wrapper .icon-container .icon-container-wrapper .cctv-container .cctv-wrapper {
   width: 40px;
   height: 40px;
-  background-image: url('/images/3d-label/cctv.svg#svgView(preserveAspectRatio(none))');
+  background-image: url('/big-data-screen/3d-label/cctv.svg#svgView(preserveAspectRatio(none))');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;

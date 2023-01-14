@@ -8,7 +8,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'big-data-screen': resolve(__dirname, 'pages/big-data-screen/index.html'),
-        'shader': resolve(__dirname, 'pages/learn-shader/index.html'),
         'tank': resolve(__dirname, 'pages/tank/index.html'),
         'demo': resolve(__dirname, 'pages/demo/index.html'),
         'home-3d': resolve(__dirname, 'pages/home-3d/index.html'),

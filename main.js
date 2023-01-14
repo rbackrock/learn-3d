@@ -8,10 +8,6 @@ const menus = [
     url: '/pages/demo/index.html'
   },
   {
-    name: 'shader试验田',
-    url: '/pages/learn-shader/index.html'
-  },
-  {
     name: 'threejs坦克案例',
     url: '/pages/tank/index.html'
   },
