@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import EventEmitter from './EventEmitter'
 
 const type = {
@@ -27,10 +28,15 @@ export default class Resources extends EventEmitter {
   }
 
   setLoaders() {
-    const manager = new THREE.LoadingManager();
+    const manager = new THREE.LoadingManager()
+
+    // 准备模型压缩加载器
+    const dracoLoader = new DRACOLoader(manager)
+    dracoLoader.setDecoderPath('/draco/')
 
     this.loaders = {}
     this.loaders.gltfLoader = new GLTFLoader(manager)
+    this.loaders.gltfLoader.setDRACOLoader(dracoLoader)
     this.loaders.textureLoader = new THREE.TextureLoader(manager)
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(manager)
 

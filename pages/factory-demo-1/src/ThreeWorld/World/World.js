@@ -56,7 +56,7 @@ export default class World {
         sceneItem.push(child)
       }
 
-      // 卡车的路面
+      // 卡车所在的路面
       if (hasIncludeMeshName(child.name, 'road#')) {
         sceneItem.push(child)
       }
