@@ -20,7 +20,7 @@ class Environment {
   }
 
   setLight() {
-    const light = new THREE.DirectionalLight(0xffffff, 3)
+    const light = new THREE.DirectionalLight(0xffffff, 6)
     light.position.set(0, 60, 0)
     this.scene.add(light)
 

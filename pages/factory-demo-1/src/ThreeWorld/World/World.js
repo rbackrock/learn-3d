@@ -49,6 +49,38 @@ export default class World {
 
       // 树
       if (hasIncludeMeshName(child.name, 'tree#')) {
+        const treeMesh = convertObject3D(child, object3d => {
+          const edges = new THREE.EdgesGeometry(object3d.geometry)
+          const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
+
+          return lines
+        })
+
+        sceneItem.push(treeMesh)
+      }
+
+      // 路灯
+      if (hasIncludeMeshName(child.name, 'street-light#')) {
+        const lightMesh = convertObject3D(child, object3d => {
+          const edges = new THREE.EdgesGeometry(object3d.geometry)
+          const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
+
+          return lines
+        })
+
+        sceneItem.push(lightMesh)
+      }
+
+      // 叉车
+      if (hasIncludeMeshName(child.name, 'forklift#')) {
+        const forkliftMesh = convertObject3D(child, object3d => {
+          const edges = new THREE.EdgesGeometry(object3d.geometry)
+          const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
+
+          return lines
+        })
+
+        sceneItem.push(forkliftMesh)
       }
 
       // 卡车
