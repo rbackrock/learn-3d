@@ -6,6 +6,8 @@ import {
   convertObject3D
 } from '../Utils/index'
 
+import Truck from './Controls/Truck'
+
 export default class World {
   constructor() {
     this.threeWorld = new ThreeWorld()
@@ -16,6 +18,7 @@ export default class World {
 
     this.resources.on('load', () => {
       this.createScene()
+      this.runWorld()
     })
   }
 
@@ -24,10 +27,9 @@ export default class World {
 
     const gltf = this.resources.items.gltfModel
     const sceneItem = []
-    console.log(gltf)
     gltf.scene.traverse(child => {
       // 路面
-      if (hasIncludeMeshName(child.name, 'floor#')) {
+      if (hasIncludeMeshName(child.name, 'floor')) {
         child.geometry.computeBoundingBox()
         const {
           min,
@@ -48,7 +50,7 @@ export default class World {
       }
 
       // 树
-      if (hasIncludeMeshName(child.name, 'tree#')) {
+      if (hasIncludeMeshName(child.name, 'tree')) {
         const treeMesh = convertObject3D(child, object3d => {
           const edges = new THREE.EdgesGeometry(object3d.geometry)
           const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
@@ -60,7 +62,7 @@ export default class World {
       }
 
       // 路灯
-      if (hasIncludeMeshName(child.name, 'street-light#')) {
+      if (hasIncludeMeshName(child.name, 'street-light')) {
         const lightMesh = convertObject3D(child, object3d => {
           const edges = new THREE.EdgesGeometry(object3d.geometry)
           const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
@@ -72,7 +74,7 @@ export default class World {
       }
 
       // 叉车
-      if (hasIncludeMeshName(child.name, 'forklift#')) {
+      if (hasIncludeMeshName(child.name, 'forklift')) {
         const forkliftMesh = convertObject3D(child, object3d => {
           const edges = new THREE.EdgesGeometry(object3d.geometry)
           const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
@@ -84,12 +86,13 @@ export default class World {
       }
 
       // 卡车
-      if (hasIncludeMeshName(child.name, 'truck#')) {
+      if (hasIncludeMeshName(child.name, 'truck')) {
         sceneItem.push(child)
+        this.truck = new Truck(child)
       }
 
       // 卡车所在的路面
-      if (hasIncludeMeshName(child.name, 'road#')) {
+      if (hasIncludeMeshName(child.name, 'road')) {
         sceneItem.push(child)
       }
     })
@@ -97,5 +100,9 @@ export default class World {
     for (let item of sceneItem) {
       this.scene.add(item)
     }
+  }
+
+  runWorld() {
+
   }
 }

@@ -1,5 +1,5 @@
-export function hasIncludeMeshName(name, includeName) {
-  return name.indexOf(includeName) !== -1
+export function hasIncludeMeshName(name, includeName, markSymbol = '#') {
+  return name.indexOf(`${includeName}${markSymbol}`) !== -1
 }
 
 export function convertObject3D(target, createObject3Func) {
