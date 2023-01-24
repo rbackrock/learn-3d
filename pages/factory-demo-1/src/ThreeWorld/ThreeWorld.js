@@ -59,14 +59,16 @@ export class ThreeWorld {
     this.camera.update()
     // this.renderer.update()
     this.outLinePostprocessing.composer.render()
-    // console.log(this.outLinePostprocessing)
   }
 
   destroy() {
     this.sizes.off('resize')
+    this.renderer.off('timeLoop')
 
     this.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
+        child.geometry.dispose()
+
         for(const key in child.material) {
           const value = child.material[key]
 

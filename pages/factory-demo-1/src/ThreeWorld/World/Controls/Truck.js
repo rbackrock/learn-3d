@@ -25,7 +25,7 @@ export default class Truck {
     const animate = {
       process: 0
     }
-    gsap.to(animate, {
+    const run = gsap.to(animate, {
       process: 1,
       duration: 16,
       repeat: -1,
@@ -38,5 +38,7 @@ export default class Truck {
         this.mesh.lookAt(lootAtPoint.x, 0, lootAtPoint.z)
       }
     })
+
+    console.log(run)
   }
 }
