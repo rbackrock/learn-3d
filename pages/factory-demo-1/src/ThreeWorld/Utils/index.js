@@ -1,3 +1,5 @@
+import * as THREE from 'three'
+
 export function hasIncludeMeshName(name, includeName, markSymbol = '#') {
   return name.indexOf(`${includeName}${markSymbol}`) !== -1
 }
@@ -21,4 +23,33 @@ export function convertObject3D(target, createObject3Func) {
   }
 
   return target
+}
+/**
+ * 
+ * @param {*} emptyObject3Ds 
+ */
+export function makeLineCurve3PathPointsByEmptyObject3D(emptyObject3Ds) {
+  const points = []
+  const emptyObject3DsLength = emptyObject3Ds.length
+  const MAX_EMPTY_OBJECT3D_LENGTH = 2
+
+  if (emptyObject3DsLength >= MAX_EMPTY_OBJECT3D_LENGTH) {
+    for (let i = 0, startPointIndex = 0, endPointIndex = 1; i < emptyObject3DsLength - 1; i++, startPointIndex++, endPointIndex++) {
+      const curve = new THREE.LineCurve3(
+        new THREE.Vector3(
+          emptyObject3Ds[startPointIndex].x,
+          emptyObject3Ds[startPointIndex].y,
+          emptyObject3Ds[startPointIndex].z
+        ),
+        new THREE.Vector3(
+          emptyObject3Ds[endPointIndex].x,
+          emptyObject3Ds[endPointIndex].y,
+          emptyObject3Ds[endPointIndex].z
+        )
+      )
+      points.push(...curve.getPoints(10))
+    }
+  }
+
+  return points
 }
