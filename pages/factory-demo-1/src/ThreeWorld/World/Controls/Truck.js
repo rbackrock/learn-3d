@@ -38,7 +38,5 @@ export default class Truck {
         this.mesh.lookAt(lootAtPoint.x, 0, lootAtPoint.z)
       }
     })
-
-    console.log(run)
   }
 }

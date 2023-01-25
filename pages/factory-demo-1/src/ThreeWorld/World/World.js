@@ -31,7 +31,6 @@ export default class World {
     const gltf = this.resources.items.gltfModel
     const sceneItem = []
     const truckPathPoints = []
-    console.log(gltf.scene)
     gltf.scene.traverse(child => {
       // 路面
       if (hasIncludeMeshName(child.name, 'floor')) {

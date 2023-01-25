@@ -65,7 +65,7 @@ export class ThreeWorld {
     this.sizes.off('resize')
     this.renderer.off('timeLoop')
 
-    this.scene.traverse((child) => {
+    this.scene.traverse(child => {
       if (child instanceof THREE.Mesh) {
         child.geometry.dispose()
 
