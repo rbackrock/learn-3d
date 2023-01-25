@@ -5,10 +5,7 @@ import Sizes from './Utils/Sizes'
 import Camera from './Camera'
 import Renderer from './Renderer'
 import World from './World/World'
-// import Resources from './Utils/Resources'
 import OutLinePostprocessing from './Postprocessing/OutLinePostprocessing'
-
-// import sources from './sources'
 
 let instance = null
 
@@ -66,15 +63,15 @@ export class ThreeWorld {
     this.renderer.off('timeLoop')
 
     this.scene.traverse(child => {
-      if (child instanceof THREE.Mesh) {
+      if (child.geometry) {
         child.geometry.dispose()
+      }
 
-        for(const key in child.material) {
-          const value = child.material[key]
+      for(const key in child.material) {
+        const value = child.material[key]
 
-          if (value && typeof value.dispose === 'function') {
-            value.dispose()
-          }
+        if (value && typeof value.dispose === 'function') {
+          value.dispose()
         }
       }
     })
@@ -84,6 +81,12 @@ export class ThreeWorld {
 
     if (this.debug.active) {
       this.debug.ui.destroy()
+    }
+
+    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收
+    // ES 类规范没有接口特性，需要清除 gsap 动画需要实现 destroyGsap 方法
+    for (const k in this.wolrd.controls) {
+      this.wolrd.controls[k].destroyGsap && this.wolrd.controls[k].destroyGsap()
     }
   }
 }

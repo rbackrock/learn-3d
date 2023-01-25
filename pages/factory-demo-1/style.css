@@ -1,0 +1,26 @@
+.loading-3d {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  padding: 10px 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+body {
+  background: url(/public/factory-demo-1/bg/background.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.ui-layout {
+  position: absolute;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  width: 250px;
+  color: #fff;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.333);
+}

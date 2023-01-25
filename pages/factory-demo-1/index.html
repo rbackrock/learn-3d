@@ -7,24 +7,7 @@
   <title>Document</title>
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <link rel="stylesheet" href="/style.css">
-  <style>
-    .loading-3d {
-      color: #fff;
-      background: rgba(0, 0, 0, 0.6);
-      position: fixed;
-      padding: 10px 30px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-    }
-
-    body {
-      background: url(/public/factory-demo-1/bg/background.png);
-      background-position: center;
-      background-size: cover;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <canvas class="webgl"></canvas>
@@ -32,5 +15,17 @@
   <script type="module" src="./src/main.js"></script>
 
   <div class="loading-3d" id="loading-3d">资源加载中...</div>
+
+  <div class="ui-layout">
+    <div class="truck-container">
+      <div class="restart">
+        <label for="truck-restart">卡车运行启动</label><input checked type="radio" name="truck" id="truck-restart" class="truck-status" value="restart">
+      </div>
+      <div class="pause">
+        <label for="truck-pause">卡车运行暂停</label><input type="radio" name="truck" id="truck-pause" class="truck-status" value="pause">
+      </div>
+    </div>
+    <hr>
+  </div>
 </body>
 </html>

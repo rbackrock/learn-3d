@@ -15,7 +15,11 @@ export default class World {
     this.resources = this.threeWorld.resources
 
     // 准备需要控制的 object3d 对象
-    this.truck = null
+    this.controls = {
+      truck: null
+    }
+
+    // 第三方使用变量
     this.truckPath = null
 
     this.createScene()
@@ -89,7 +93,7 @@ export default class World {
       // 卡车
       if (hasIncludeMeshName(child.name, 'truck')) {
         sceneItem.push(child)
-        this.truck = new Truck(child)
+        this.controls.truck = new Truck(child)
       }
 
       // 通过自定义点绘制运动曲线
@@ -118,6 +122,6 @@ export default class World {
   }
 
   runWorld() {
-    this.truck.run(this.truckPath)
+    this.controls.truck.run(this.truckPath)
   }
 }
