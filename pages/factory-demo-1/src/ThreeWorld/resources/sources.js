@@ -1,6 +1,4 @@
-import {
-  sourceType
-} from './Utils/Resources'
+import sourceType from './sourceType'
 
 export default [
   // {

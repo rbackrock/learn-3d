@@ -3,8 +3,7 @@ import ThreeWorld from '../ThreeWorld'
 import Environment from './Environment'
 import {
   hasIncludeMeshName,
-  convertObject3D,
-  makeLineCurve3PathPointsByEmptyObject3D
+  convertObject3D
 } from '../Utils/index'
 
 import Truck from './Controls/Truck'
@@ -19,16 +18,14 @@ export default class World {
     this.truck = null
     this.truckPath = null
 
-    this.resources.on('load', () => {
-      this.createScene()
-      this.runWorld()
-    })
+    this.createScene()
+    this.runWorld()
   }
 
   createScene() {
     this.environment = new Environment()
 
-    const gltf = this.resources.items.gltfModel
+    const gltf = this.resources.gltfModel
     const sceneItem = []
     const truckPathPoints = []
     gltf.scene.traverse(child => {
