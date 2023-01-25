@@ -17,7 +17,6 @@ export class ThreeWorld {
 
     // 设置 3d 场景实例
     instance = this
-    window.threeWorld = this
 
     // 设置 canvas
     this.canvas = _canvas
