@@ -1,13 +1,13 @@
 import * as THREE from 'three'
-import ThreeWorld from './ThreeWorld'
+import ThreeDimensional from './ThreeDimensional'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export default class Camera {
   constructor() {
-    this.threeWorld = new ThreeWorld()
-    this.sizes = this.threeWorld.sizes
-    this.scene = this.threeWorld.scene
-    this.canvas = this.threeWorld.canvas
+    this.threeDimensional = new ThreeDimensional()
+    this.sizes = this.threeDimensional.sizes
+    this.scene = this.threeDimensional.scene
+    this.canvas = this.threeDimensional.canvas
 
     this.setInstance()
     this.setControls()

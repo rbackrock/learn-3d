@@ -1,15 +1,15 @@
 import {
   CSS2DRenderer
 } from 'three/examples/jsm/renderers/CSS2DRenderer'
-import ThreeWorld from './ThreeWorld'
+import ThreeDimensional from './ThreeDimensional'
 
 export default class Css2dRender {
   constructor() {
-    this.threeWorld = new ThreeWorld()
-    this.canvas = this.threeWorld.canvas
-    this.sizes = this.threeWorld.sizes
-    this.scene = this.threeWorld.scene
-    this.camera = this.threeWorld.camera
+    this.threeDimensional = new ThreeDimensional()
+    this.canvas = this.threeDimensional.canvas
+    this.sizes = this.threeDimensional.sizes
+    this.scene = this.threeDimensional.scene
+    this.camera = this.threeDimensional.camera
 
     this.create()
   }

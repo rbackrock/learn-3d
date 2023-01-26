@@ -1,11 +1,11 @@
 import * as THREE from 'three'
-import ThreeWorld from '../ThreeWorld'
+import ThreeDimensional from '../ThreeDimensional'
 
 class Environment {
   constructor() {
-    this.threeWorld = new ThreeWorld()
-    this.scene = this.threeWorld.scene
-    this.resources = this.threeWorld.resources
+    this.threeDimensional = new ThreeDimensional()
+    this.scene = this.threeDimensional.scene
+    this.resources = this.threeDimensional.resources
 
     // this.setEnvironmentMap()
     this.setLight()

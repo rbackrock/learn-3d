@@ -1,12 +1,12 @@
 import * as THREE from 'three'
-import ThreeWorld from '../ThreeWorld'
+import ThreeDimensional from '../ThreeDimensional'
 
 export default class box {
   constructor() {
-    this.threeWorld = new ThreeWorld()
-    this.scene = this.threeWorld.scene
-    this.outLinePostprocessing = this.threeWorld.outLinePostprocessing
-    this.debug = this.threeWorld.debug
+    this.threeDimensional = new ThreeDimensional()
+    this.scene = this.threeDimensional.scene
+    this.outLinePostprocessing = this.threeDimensional.outLinePostprocessing
+    this.debug = this.threeDimensional.debug
 
     const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshBasicMaterial({

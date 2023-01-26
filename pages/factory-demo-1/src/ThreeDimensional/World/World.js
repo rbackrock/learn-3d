@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import ThreeWorld from '../ThreeWorld'
+import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
 import {
   hasIncludeMeshName,
@@ -10,9 +10,9 @@ import Truck from './Controls/Truck'
 
 export default class World {
   constructor() {
-    this.threeWorld = new ThreeWorld()
-    this.scene = this.threeWorld.scene
-    this.resources = this.threeWorld.resources
+    this.threeDimensional = new ThreeDimensional()
+    this.scene = this.threeDimensional.scene
+    this.resources = this.threeDimensional.resources
 
     // 准备需要控制的 object3d 对象
     this.controls = {

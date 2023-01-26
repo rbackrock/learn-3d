@@ -1,16 +1,16 @@
 import * as THREE from 'three'
 import EventEmitter from './Utils/EventEmitter'
-import ThreeWorld from './ThreeWorld'
+import ThreeDimensional from './ThreeDimensional'
 
 export default class Renderer extends EventEmitter {
   constructor() {
     super()
 
-    this.threeWorld = new ThreeWorld()
-    this.canvas = this.threeWorld.canvas
-    this.sizes = this.threeWorld.sizes
-    this.scene = this.threeWorld.scene
-    this.camera = this.threeWorld.camera
+    this.threeDimensional = new ThreeDimensional()
+    this.canvas = this.threeDimensional.canvas
+    this.sizes = this.threeDimensional.sizes
+    this.scene = this.threeDimensional.scene
+    this.camera = this.threeDimensional.camera
 
     this.setInstance()
   }

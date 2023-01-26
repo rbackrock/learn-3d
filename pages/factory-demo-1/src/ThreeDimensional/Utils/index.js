@@ -1,9 +1,20 @@
 import * as THREE from 'three'
 
+/**
+ * 在 Blender 中为需要操作的元素命名，格式为{名称 + 标记符号},例如，tree#1, tree#2, tree#3 方便获取
+ * @param {String} name 当前模型元素名称
+ * @param {String} includeName 包含的元素名称
+ * @param {String} markSymbol 标记字符
+ */
 export function hasIncludeMeshName(name, includeName, markSymbol = '#') {
   return name.indexOf(`${includeName}${markSymbol}`) !== -1
 }
 
+/**
+ * 提柜让 Object3d 对象转化为希望的 Object3d方法
+ * @param {Object} target 目标 object3d
+ * @param {Function} createObject3Func 创新新 Object3d 方法
+ */
 export function convertObject3D(target, createObject3Func) {
   if (target.isGroup) {
     if (target.children.length > 0) {
