@@ -1,4 +1,5 @@
 /**
+ * @auther yhuan
  * canvas 元素外面需要包裹一个父级以适应不同固定宽高的显示需求
  * 场景元素分为固定3d物体和操作3d物体，操作3d物体列表在 World 对象中的 controls 属性中
  * 控制元素需要 gsap 动画时，需要在对应该类实现 destroyGsap 方法用作释放资源使用
