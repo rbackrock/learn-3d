@@ -5,7 +5,7 @@
  * 
  * # 场景元素分为固定3d物体和操作3d物体，操作3d物体列表在 World 对象中的 controls 属性中
  * 
- * # 控制元素需要 gsap 动画时，需要在对应该类实现 destroyGsap 方法用作释放资源使用，该方法需要 .kill() 之外，还需要将引用设置为 null
+ * # 控制元素需要 gsap 动画时，需要在对应该类实现 destroy 方法用作释放资源使用，该方法需要 .kill() 之外，还需要将引用设置为 null，其他需要清理的事件对象也在该方法编写
  * 
  * # 约定在 Blender 中为需要操作的元素命名，格式为{名称 + 标记符号},例如，tree#1, tree#2, tree#3 方便获取
  */
@@ -101,10 +101,10 @@ export class ThreeDimensional {
       this.debug.ui.destroy()
     }
 
-    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收
-    // ES 类规范没有接口特性，需要清除 gsap 动画需要实现 destroyGsap 方法
+    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收，或者其他事件对象
+    // ES 类规范没有接口特性，需要清除 gsap 动画需要实现 destroy 方法
     for (const k in this.wolrd.controls) {
-      this.wolrd.controls[k].destroyGsap && this.wolrd.controls[k].destroyGsap()
+      this.wolrd.controls[k].destroy && this.wolrd.controls[k].destroy()
     }
   }
 }

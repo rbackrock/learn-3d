@@ -1,4 +1,6 @@
-import * as THREE from 'three'
+import {
+  CSS2DObject
+} from 'three/examples/jsm/renderers/CSS2DRenderer'
 import gsap from 'gsap'
 import {
   hasIncludeMeshName
@@ -10,20 +12,6 @@ export default class Truck {
 
     this.wheelAnimation = []
     this.runAnimation = null
-  }
-
-  destroyGsap() {
-    if (this.wheelAnimation.length > 0) {
-      for (const wheel of this.wheelAnimation) {
-        wheel.kill()
-      }
-      this.wheelAnimation = null
-    }
-
-    if (this.runAnimation) {
-      this.runAnimation.kill()
-      this.runAnimation = null
-    }
   }
 
   run(truckPath) {
@@ -80,6 +68,52 @@ export default class Truck {
 
     if (this.runAnimation) {
       this.runAnimation.play()
+    }
+  }
+
+  setLabel(data) {
+    const labelElement = document.createElement('div')
+    labelElement.innerHTML = `
+      <div class="three-label-container">
+        <div class="three-label-container-wrapper">
+          <div class="title-container">
+            <div class="title-container-wrapper">
+              <div class="room-id">${data.num}</div>
+              <div class="room-name">${data.name}</div>
+            </div>
+          </div>
+          <div class="icon-container">
+            <div class="icon-container-wrapper">
+              <div class="fan-container">
+                <div class="fan-part1"></div>
+                <div class="fan-part2"></div>
+              </div>
+              <div class="cctv-container">
+                <div class="cctv-wrapper"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+
+    const label = new CSS2DObject(labelElement)
+    label.position.set(0, 9, 0)
+
+    this.mesh.add(label)
+  }
+
+  destroy() {
+    if (this.wheelAnimation.length > 0) {
+      for (const wheel of this.wheelAnimation) {
+        wheel.kill()
+      }
+      this.wheelAnimation = null
+    }
+
+    if (this.runAnimation) {
+      this.runAnimation.kill()
+      this.runAnimation = null
     }
   }
 }

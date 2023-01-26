@@ -24,3 +24,74 @@ body {
   font-size: 20px;
   background: rgba(255, 255, 255, 0.333);
 }
+@keyframes fan-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.three-label-container {
+  width: 200px;
+  height: 100%;
+  color: #00deff;
+}
+.three-label-container .three-label-container-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.three-label-container .three-label-container-wrapper .title-container {
+  background-image: url('/images/3d-label/text-box.svg#svgView(preserveAspectRatio(none))');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.three-label-container .three-label-container-wrapper .title-container .title-container-wrapper {
+  text-align: center;
+  pointer-events: all;
+  cursor: pointer;
+}
+.three-label-container .three-label-container-wrapper .title-container .title-container-wrapper .room-id {
+  padding: 2% 0;
+  font-size: 1.4em;
+}
+.three-label-container .three-label-container-wrapper .title-container .title-container-wrapper .room-name {
+  font-size: 1.2em;
+  padding: 0 0 5% 0;
+}
+.three-label-container .three-label-container-wrapper .icon-container .icon-container-wrapper {
+  position: relative;
+}
+.three-label-container .three-label-container-wrapper .icon-container .icon-container-wrapper .fan-container .fan-part1 {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  background-image: url('/images/3d-label/fan-part1.svg#svgView(preserveAspectRatio(none))');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  animation: fan-rotate 1.3s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+.three-label-container .three-label-container-wrapper .icon-container .icon-container-wrapper .cctv-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.three-label-container .three-label-container-wrapper .icon-container .icon-container-wrapper .cctv-container .cctv-wrapper {
+  width: 40px;
+  height: 40px;
+  background-image: url('/images/3d-label/cctv.svg#svgView(preserveAspectRatio(none))');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  pointer-events: all;
+  cursor: pointer;
+}

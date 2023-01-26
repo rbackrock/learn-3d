@@ -1,9 +1,10 @@
 import load from './ThreeDimensional/resources/index'
 import ThreeDimensional from './ThreeDimensional/ThreeDimensional'
+import World from './ThreeDimensional/World/World'
 
 const load1 = () => {
   return new Promise((resolve, reject) => {
-    resolve('hello')
+    resolve('模拟异步数据')
   })
 }
 
@@ -13,19 +14,26 @@ async function main() {
 
   document.querySelector('#loading-3d').style.display = 'none'
   const threeDimensional = new ThreeDimensional(document.querySelector('canvas.webgl'), resources)
+  const wolrd = threeDimensional.wolrd
 
-  // UI 操作
+  // 切换卡车暂停和重启
   const truckRadio = document.querySelectorAll('.truck-status')
   for (const truck of truckRadio) {
     truck.addEventListener('change', evt => {
       const radioValue = evt.target.value
       if (radioValue === 'pause') {
-        threeDimensional.wolrd.controls.truck.stop()
+        wolrd.controls.truck.stop()
       } else if (radioValue === 'restart') {
-        threeDimensional.wolrd.controls.truck.restart()
+        wolrd.controls.truck.restart()
       }
     })
   }
+
+  // 设置卡车标记内容
+  wolrd.controls.truck.setLabel({
+    num: '#333',
+    name: '我是一辆卡车'
+  })
 }
 
 main()
