@@ -122,11 +122,9 @@ export default class Truck {
     this.raycaster.setFromCamera(labelPositionForNDC, this.camera.instance)
 
     const intersects = this.raycaster.intersectObjects(this.scene.children, false)
-    console.log(intersects)
     if (intersects.length == 0) {
       document.querySelector('#truck-label-hook').style.display = 'block'
     } else {
-      // document.querySelector('#truck-label-hook').style.display = 'none'
       if (intersects[0].distance < labelDistance) {
         document.querySelector('#truck-label-hook').style.display = 'none'
       } else {
