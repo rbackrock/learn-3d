@@ -74,6 +74,9 @@ export class ThreeDimensional {
     // this.renderer.update()
     this.outLinePostprocessing.update()
     this.css2dRender.update()
+
+    //controls
+    this.wolrd.controls.truck.update()
   }
 
   destroy() {
@@ -102,7 +105,7 @@ export class ThreeDimensional {
     }
 
     // 删除并且置空控制物体的 gsap 动画对象让垃圾回收，或者其他事件对象
-    // ES 类规范没有接口特性，需要清除 gsap 动画需要实现 destroy 方法
+    // ES 类规范没有接口特性，需要清除 gsap 动画需要自己记得实现 destroy 方法
     for (const k in this.wolrd.controls) {
       this.wolrd.controls[k].destroy && this.wolrd.controls[k].destroy()
     }

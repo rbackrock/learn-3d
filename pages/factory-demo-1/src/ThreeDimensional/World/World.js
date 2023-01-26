@@ -107,7 +107,20 @@ export default class World {
       }
 
       // 光
-      if (child.name === '日光') {
+      if (child.name === 'sunlight1') {
+        sceneItem.push(child)
+      }
+
+      if (child.name === 'sunlight2') {
+        sceneItem.push(child)
+      }
+
+      if (child.name === 'sunlight3') {
+        sceneItem.push(child)
+      }
+
+      // 建筑
+      if (hasIncludeMeshName(child.name, 'building')) {
         sceneItem.push(child)
       }
     })

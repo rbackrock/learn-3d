@@ -22,7 +22,7 @@ export default class Css2dRender {
     this.instance.domElement.style.position = 'absolute';
     this.instance.domElement.style.top = '0px';
     this.instance.domElement.style.left = '0px';
-    this.instance.domElement.style.zIndex = '9';
+    // this.instance.domElement.style.zIndex = '9';
     this.instance.domElement.style.pointerEvents = 'none'
   }
 
