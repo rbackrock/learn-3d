@@ -49,6 +49,11 @@ body {
   width: 200px;
   height: 100%;
   color: #00deff;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
 
   .three-label-container-wrapper {
     width: 100%;
@@ -67,13 +72,13 @@ body {
         cursor: pointer;
 
         .room-id {
-          padding: 2% 0;
+          padding: 2% 0 0 0;
           font-size: 1.4em;
         }
 
         .room-name {
           font-size: 1.2em;
-          padding: 0 0 5% 0;
+          padding: 2% 0 5% 0;
         }
       }
     }

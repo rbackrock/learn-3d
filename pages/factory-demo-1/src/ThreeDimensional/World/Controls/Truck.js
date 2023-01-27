@@ -80,7 +80,7 @@ export default class Truck {
   setLabel(data) {
     const labelElement = document.createElement('div')
     labelElement.innerHTML = `
-      <div id="truck-label-hook" class="three-label-container">
+      <div id="truck-label-hook" class="three-label-container visible">
         <div class="three-label-container-wrapper">
           <div class="title-container">
             <div class="title-container-wrapper">
@@ -95,7 +95,7 @@ export default class Truck {
                 <div class="fan-part2"></div>
               </div>
               <div class="cctv-container">
-                <div class="cctv-wrapper"></div>
+                <!--<div class="cctv-wrapper"></div>-->
               </div>
             </div>
           </div>

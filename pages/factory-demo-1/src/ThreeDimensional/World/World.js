@@ -171,16 +171,24 @@ export default class World {
     const mousePositionNDC = covertMousePositionToNDC(this.sizes.width, this.sizes.height, evt.clientX, evt.clientY)
     raycaster.setFromCamera(mousePositionNDC, this.camera.activeCamera)
     const intersects = raycaster.intersectObjects(this.scene.children, true)
-    
+
     if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
       this.outlinePass.selectedObjects = [this.controls.machine.mesh]
-    } else if ((intersects[0]?.object?.name || '').indexOf('building') !== -1) {
+      this.controls.machine.setLabelVisible(true)
+
+      return
+    }
+    this.controls.machine.setLabelVisible(false)
+
+    if ((intersects[0]?.object?.name || '').indexOf('building') !== -1) {
       if (intersects.length > 0) {
         this.outlinePass.selectedObjects = [intersects[0].object]
       }
-    } else {
-      this.outlinePass.selectedObjects = []
+
+      return
     }
+
+    this.outlinePass.selectedObjects = []
   }
   
   bindEvent() {
