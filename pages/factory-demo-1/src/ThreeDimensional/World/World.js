@@ -3,28 +3,38 @@ import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
 import {
   hasIncludeMeshName,
-  convertObject3D
+  convertObject3D,
+  covertMousePositionToNDC
 } from '../Utils/index'
 
 import Truck from './Controls/Truck'
+import Machine from './Controls/Machine'
 
 export default class World {
   constructor() {
     this.threeDimensional = new ThreeDimensional()
+    this.canvas = this.threeDimensional.canvas
     this.camera = this.threeDimensional.camera
     this.scene = this.threeDimensional.scene
+    this.sizes = this.threeDimensional.sizes
+    this.outlinePass = this.threeDimensional.outlinePass 
     this.resources = this.threeDimensional.resources
 
     // 准备需要控制的 object3d 对象
     this.controls = {
-      truck: null
+      truck: null,
+      machine: null
     }
 
     // 第三方使用变量
     this.truckPath = null
 
     this.createScene()
-    this.runWorld()
+    this.run()
+
+    // 绑定事件函数
+    this.pointMoveHandler = this.pointMoveHandlerFunc.bind(this)
+    this.bindEvent()
   }
 
   createScene() {
@@ -126,9 +136,20 @@ export default class World {
         sceneItem.push(child)
       }
 
+      // 添加路障
+      if (hasIncludeMeshName(child.name, 'roadblock')) {
+        sceneItem.push(child)
+      }
+
       // 建筑
       if (hasIncludeMeshName(child.name, 'building')) {
         sceneItem.push(child)
+      }
+
+      // 中央机器
+      if (child.name === 'machine') {
+        sceneItem.push(child)
+        this.controls.machine = new Machine(child)
       }
     })
 
@@ -141,7 +162,36 @@ export default class World {
     this.truckPath = new THREE.CatmullRomCurve3(truckPathPoints, true, 'catmullrom', 0.3)
   }
 
-  runWorld() {
+  run() {
     this.controls.truck.run(this.truckPath)
+  }
+
+  pointMoveHandlerFunc(evt) {
+    const raycaster = new THREE.Raycaster()
+    const mousePositionNDC = covertMousePositionToNDC(this.sizes.width, this.sizes.height, evt.clientX, evt.clientY)
+    raycaster.setFromCamera(mousePositionNDC, this.camera.activeCamera)
+    const intersects = raycaster.intersectObjects(this.scene.children, true)
+    
+    if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
+      this.outlinePass.selectedObjects = [this.controls.machine.mesh]
+    } else if ((intersects[0]?.object?.name || '').indexOf('building') !== -1) {
+      if (intersects.length > 0) {
+        this.outlinePass.selectedObjects = [intersects[0].object]
+      }
+    } else {
+      this.outlinePass.selectedObjects = []
+    }
+  }
+  
+  bindEvent() {
+    this.canvas.addEventListener('pointermove', this.pointMoveHandler)
+  }
+
+  removeEnent() {
+    this.canvas.removeEventListener('pointermove', this.pointMoveHandler)
+  }
+
+  destroy() {
+    this.removeEnent()
   }
 }

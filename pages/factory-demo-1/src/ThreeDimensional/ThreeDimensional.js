@@ -44,14 +44,15 @@ export class ThreeDimensional {
     this.camera = new Camera()
     this.renderer = new Renderer()
 
-    // world
-    this.wolrd = new World()
-
     // css2drender
     this.css2dRender = new Css2dRender()
     
     // 后期处理
     this.postprocessingRender = new Postprocessing()
+    this.outlinePass = this.postprocessingRender.outlinePass
+
+    // world
+    this.wolrd = new World()
 
     this.sizes.on('resize', () => {
       this.resize()
@@ -80,6 +81,17 @@ export class ThreeDimensional {
   }
 
   destroy() {
+    this.wolrd.destroy()
+    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收，或者其他事件对象
+    // ES 类规范没有接口特性，需要清除 gsap 动画需要自己记得实现 destroy 方法
+    for (const wolrdControlsKey in this.wolrd.controls) {
+      this.wolrd.controls[wolrdControlsKey].destroy && this.wolrd.controls[wolrdControlsKey].destroy()
+    }
+
+    if (this.debug.active) {
+      this.debug.ui.destroy()
+    }
+
     this.sizes.off('resize')
     this.renderer.off('timeLoop')
 
@@ -100,16 +112,6 @@ export class ThreeDimensional {
     this.postprocessingRender.destroy()
     this.camera.destroy()
     this.renderer.destroy()
-
-    if (this.debug.active) {
-      this.debug.ui.destroy()
-    }
-
-    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收，或者其他事件对象
-    // ES 类规范没有接口特性，需要清除 gsap 动画需要自己记得实现 destroy 方法
-    for (const wolrdControlsKey in this.wolrd.controls) {
-      this.wolrd.controls[wolrdControlsKey].destroy && this.wolrd.controls[wolrdControlsKey].destroy()
-    }
   }
 }
 

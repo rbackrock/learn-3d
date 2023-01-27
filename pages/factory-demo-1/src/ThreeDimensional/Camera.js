@@ -33,7 +33,7 @@ export default class Camera {
 
   setDefaultCamera() {
     const defaultCamera = new THREE.PerspectiveCamera(35, this.sizes.width / this.sizes.height, 0.1, 10000)
-    defaultCamera.position.set(123.725, 82.483, 164.967)
+    defaultCamera.position.set(-213.125, 62.492, 4.971)
     defaultCamera.name = cameraType.STANDARD
     this.scene.add(defaultCamera)
 
