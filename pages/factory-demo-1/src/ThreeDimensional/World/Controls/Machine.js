@@ -3,7 +3,8 @@ import {
   CSS2DObject
 } from 'three/examples/jsm/renderers/CSS2DRenderer'
 import {
-  convertObject3D
+  convertObject3D,
+  deepCloneObject3d
 } from '../../Utils/index'
 import ThreeDimensional from '../../ThreeDimensional'
 
@@ -12,8 +13,7 @@ export default class Machine {
     this.mesh = mesh
     this.threeDimensional = new ThreeDimensional()
     this.scene = this.threeDimensional.scene
-
-    this.originMesh = mesh.clone()
+    this.originMesh = deepCloneObject3d(mesh)
 
     this.setLabel()
   }
@@ -69,18 +69,20 @@ export default class Machine {
     }
   }
 
-  setOrigin() {}
-
   setLineMesh() {
-    const lineMesh = convertObject3D(this.originMesh.clone(), object3d => {
+    const newOriginMesh = deepCloneObject3d(this.originMesh)
+    const lineMesh = convertObject3D(newOriginMesh, object3d => {
       const edges = new THREE.EdgesGeometry(object3d.geometry)
       const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
 
       return lines
     })
 
+    console.log(lineMesh);
+
     const machineObject3d = this.scene.getObjectByName('machine')
     if (machineObject3d) {
+      this.mesh = lineMesh
       this.scene.remove(machineObject3d)
       this.scene.add(lineMesh)
     }
@@ -90,7 +92,10 @@ export default class Machine {
     const machineObject3d = this.scene.getObjectByName('machine')
     if (machineObject3d) {
       this.scene.remove(machineObject3d)
-      this.scene.add(this.originMesh)
+
+      const newOriginMesh = deepCloneObject3d(this.originMesh)
+      this.mesh = newOriginMesh
+      this.scene.add(newOriginMesh)
     }
   }
 }

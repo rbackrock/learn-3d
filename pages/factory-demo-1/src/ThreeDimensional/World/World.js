@@ -175,6 +175,7 @@ export default class World {
     // hover 中央机器
     if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
       // 设置高亮
+      // console.log(this.controls.machine.mesh)
       this.outlinePass.selectedObjects = [this.controls.machine.mesh]
       // 显示中央机器标签
       this.controls.machine.setLabelVisible(true)

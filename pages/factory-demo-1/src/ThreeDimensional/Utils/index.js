@@ -79,3 +79,22 @@ export function covertMousePositionToNDC(containerWidth, containerHeight, x, y) 
 
   return ndcPosition
 }
+
+/**
+ * 深度克隆 Object3d 对象
+ * @param {Object} targetObject3d 克隆目标对象
+ */
+export function deepCloneObject3d(targetObject3d) {
+  if (targetObject3d instanceof THREE.Object3D) {
+    const newObject3d = targetObject3d.clone()
+    newObject3d.name = targetObject3d.name
+    newObject3d.parent = targetObject3d.parent
+    newObject3d.position.copy(targetObject3d.position)
+    newObject3d.rotation.copy(targetObject3d.rotation)
+    newObject3d.scale.copy(targetObject3d.scale)
+
+    return newObject3d
+  }
+
+  return null
+}
