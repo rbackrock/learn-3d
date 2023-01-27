@@ -113,13 +113,13 @@ export default class Truck {
     // 标签和相机距离
     const labelPosition = this.mesh.position.clone()
     labelPosition.y += 6
-    const labelDistance = labelPosition.distanceTo(this.camera.instance.position)
+    const labelDistance = labelPosition.distanceTo(this.camera.activeCamera.position)
 
     // 通过摄像机和目标位置更新射线，射线需要 NDC 归一化为设备坐标
     const labelPositionForNDC = this.mesh.position.clone()
     labelPositionForNDC.y += 6
-    labelPositionForNDC.project(this.camera.instance)
-    this.raycaster.setFromCamera(labelPositionForNDC, this.camera.instance)
+    labelPositionForNDC.project(this.camera.activeCamera)
+    this.raycaster.setFromCamera(labelPositionForNDC, this.camera.activeCamera)
 
     const intersects = this.raycaster.intersectObjects(this.scene.children, false)
     if (intersects.length == 0) {

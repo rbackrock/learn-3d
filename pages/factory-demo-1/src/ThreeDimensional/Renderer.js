@@ -42,6 +42,10 @@ export default class Renderer extends EventEmitter {
   }
 
   update() {
-    this.instance.render(this.scene, this.camera.instance)
+    this.instance.render(this.scene, this.camera.activeCamera)
+  }
+
+  destroy() {
+    this.instance.dispose()
   }
 }

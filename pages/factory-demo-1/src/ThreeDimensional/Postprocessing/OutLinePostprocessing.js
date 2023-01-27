@@ -18,13 +18,13 @@ export default class OutLinePostprocessing {
 
   create() {
     this.composer = new EffectComposer(this.renderer.instance)
-    const renderPass = new RenderPass(this.scene, this.camera.instance)
+    const renderPass = new RenderPass(this.scene, this.camera.activeCamera)
     this.composer.addPass(renderPass)
 
     this.outlinePass = new OutlinePass(
       new THREE.Vector2(this.sizes.width, this.sizes.height),
       this.scene,
-      this.camera.instance
+      this.camera.activeCamera
     )
     this.composer.addPass(this.outlinePass)
   }

@@ -31,6 +31,6 @@ export default class Css2dRender {
   }
 
   update() {
-    this.instance.render(this.scene, this.camera.instance)
+    this.instance.render(this.scene, this.camera.activeCamera)
   }
 }
