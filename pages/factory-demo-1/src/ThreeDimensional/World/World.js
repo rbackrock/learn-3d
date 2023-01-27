@@ -148,8 +148,8 @@ export default class World {
 
       // 中央机器
       if (child.name === 'machine') {
-        sceneItem.push(child)
         this.controls.machine = new Machine(child)
+        sceneItem.push(this.controls.machine.mesh)
       }
     })
 
@@ -172,8 +172,11 @@ export default class World {
     raycaster.setFromCamera(mousePositionNDC, this.camera.activeCamera)
     const intersects = raycaster.intersectObjects(this.scene.children, true)
 
+    // hover 中央机器
     if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
+      // 设置高亮
       this.outlinePass.selectedObjects = [this.controls.machine.mesh]
+      // 显示中央机器标签
       this.controls.machine.setLabelVisible(true)
 
       return

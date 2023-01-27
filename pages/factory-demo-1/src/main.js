@@ -45,6 +45,20 @@ async function main() {
     })
   }
 
+  // 切换中央机器显示风格
+  const machineRadio = document.querySelectorAll('.machine')
+  for (const machine of machineRadio) {
+    machine.addEventListener('change', evt => {
+      const radioValue = evt.target.value
+
+      if (radioValue === 'origin') {
+        wolrd.controls.machine.setOriginMesh()
+      } else if (radioValue === 'line') {
+        wolrd.controls.machine.setLineMesh()
+      }
+    })
+  }
+
   // 测试释放资源是否有问题
   // window.setTimeout(() => {
   //   threeDimensional.destroy()

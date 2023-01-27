@@ -1,10 +1,19 @@
+import * as THREE from 'three'
 import {
   CSS2DObject
 } from 'three/examples/jsm/renderers/CSS2DRenderer'
+import {
+  convertObject3D
+} from '../../Utils/index'
+import ThreeDimensional from '../../ThreeDimensional'
 
 export default class Machine {
   constructor(mesh) {
     this.mesh = mesh
+    this.threeDimensional = new ThreeDimensional()
+    this.scene = this.threeDimensional.scene
+
+    this.originMesh = mesh.clone()
 
     this.setLabel()
   }
@@ -57,6 +66,31 @@ export default class Machine {
 
     if (!visible && hasVisible) {
       labelClassList.remove('visible')
+    }
+  }
+
+  setOrigin() {}
+
+  setLineMesh() {
+    const lineMesh = convertObject3D(this.originMesh.clone(), object3d => {
+      const edges = new THREE.EdgesGeometry(object3d.geometry)
+      const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
+
+      return lines
+    })
+
+    const machineObject3d = this.scene.getObjectByName('machine')
+    if (machineObject3d) {
+      this.scene.remove(machineObject3d)
+      this.scene.add(lineMesh)
+    }
+  }
+
+  setOriginMesh() {
+    const machineObject3d = this.scene.getObjectByName('machine')
+    if (machineObject3d) {
+      this.scene.remove(machineObject3d)
+      this.scene.add(this.originMesh)
     }
   }
 }
