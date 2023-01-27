@@ -78,31 +78,9 @@ export default class Truck {
   }
 
   setLabel(data) {
-    const labelElement = document.createElement('div')
-    labelElement.innerHTML = `
-      <div id="truck-label-hook" class="three-label-container visible">
-        <div class="three-label-container-wrapper">
-          <div class="title-container">
-            <div class="title-container-wrapper">
-              <div class="room-id">${data.num}</div>
-              <div class="room-name">${data.name}</div>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon-container-wrapper">
-              <div class="fan-container">
-                <div class="fan-part1"></div>
-                <div class="fan-part2"></div>
-              </div>
-              <div class="cctv-container">
-                <!--<div class="cctv-wrapper"></div>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `
-
+    const labelElement = document.querySelector('#truck-label-hook')
+    labelElement.querySelector('#truck-label-id-hook').innerHTML = data.num
+    labelElement.querySelector('#truck-label-name-hook').innerHTML = data.name
     this.label = new CSS2DObject(labelElement)
     this.label.position.set(0, 9, 0)
 

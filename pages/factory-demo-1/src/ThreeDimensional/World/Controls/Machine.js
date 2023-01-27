@@ -19,30 +19,7 @@ export default class Machine {
   }
 
   setLabel() {
-    const labelElement = document.createElement('div')
-    labelElement.innerHTML = `
-      <div id="machine-label-hook" class="three-label-container">
-        <div class="three-label-container-wrapper">
-          <div class="title-container">
-            <div class="title-container-wrapper">
-              <div class="room-name">${`我是中央机器`}</div>
-            </div>
-          </div>
-          <div class="icon-container">
-            <div class="icon-container-wrapper">
-              <div class="fan-container">
-                <div class="fan-part1"></div>
-                <div class="fan-part2"></div>
-              </div>
-              <div class="cctv-container">
-                <!--<div class="cctv-wrapper"></div>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `
-
+    const labelElement = document.querySelector('#machine-label-hook')
     this.label = new CSS2DObject(labelElement)
     this.label.position.set(0, 28, 0)
 
