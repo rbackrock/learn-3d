@@ -5,7 +5,7 @@ import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
 
 import ThreeDimensional from '../ThreeDimensional'
 
-export default class OutLinePostprocessing {
+export default class Postprocessing {
   constructor() {
     this.threeDimensional = new ThreeDimensional()
     this.sizes = this.threeDimensional.sizes
@@ -18,9 +18,10 @@ export default class OutLinePostprocessing {
 
   create() {
     this.composer = new EffectComposer(this.renderer.instance)
-    const renderPass = new RenderPass(this.scene, this.camera.activeCamera)
-    this.composer.addPass(renderPass)
-
+    this.renderPass = new RenderPass(this.scene, this.camera.activeCamera)
+    this.composer.addPass(this.renderPass)
+    
+    // 添加 OutLine 特效
     this.outlinePass = new OutlinePass(
       new THREE.Vector2(this.sizes.width, this.sizes.height),
       this.scene,
@@ -31,9 +32,12 @@ export default class OutLinePostprocessing {
 
   resize() {
     this.composer.setSize(this.sizes.width, this.sizes.height)
+    this.composer.setPixelRatio(Math.min(this.sizes.pixelRatio, 2))
   }
 
   update() {
+    this.renderPass.camera = this.camera.activeCamera
+    this.outlinePass.renderCamera = this.camera.activeCamera
     this.composer.render()
   }
 }

@@ -11,6 +11,7 @@ import Truck from './Controls/Truck'
 export default class World {
   constructor() {
     this.threeDimensional = new ThreeDimensional()
+    this.camera = this.threeDimensional.camera
     this.scene = this.threeDimensional.scene
     this.resources = this.threeDimensional.resources
 
@@ -32,6 +33,12 @@ export default class World {
     const gltf = this.resources.gltfModel
     const sceneItem = []
     const truckPathPoints = []
+
+    // 添加额外摄像机
+    for (const camera of gltf.cameras) {
+      this.camera.addExtraCamera(camera.name, camera)
+    }
+
     gltf.scene.traverse(child => {
       // 路面
       if (hasIncludeMeshName(child.name, 'floor')) {

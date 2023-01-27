@@ -3,8 +3,9 @@ import ThreeDimensional from './ThreeDimensional'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export const cameraType = {
-  STANDARD: 'standard',
-  TRACK_TRUCK: 'track_truck'
+  STANDARD: 'standard_camera',
+  TRACK_TRUCK_REAR: 'track_truck_rear_camera',
+  TRACK_TRUCK_FLANK: 'track_truck_flank_camera'
 }
 
 export default class Camera {
@@ -48,8 +49,11 @@ export default class Camera {
   }
 
   resize() {
-    this.activeCamera.aspect = this.sizes.width / this.sizes.height
-    this.activeCamera.updateProjectionMatrix()
+    for (const cameraKey in this.cameraList) {
+      const currentCamera = this.cameraList[cameraKey]
+      currentCamera.camera.aspect = this.sizes.width / this.sizes.height
+      currentCamera.camera.updateProjectionMatrix()
+    }
   }
 
   update() {
@@ -74,6 +78,8 @@ export default class Camera {
    * @param {Object} controls 对用相机控制器对象
    */
   addExtraCamera(cameraType, camera, controls = null) {
+    camera.aspect = this.sizes.width / this.sizes.height
+    camera.updateProjectionMatrix()
     this.cameraList[cameraType] = {
       camera: camera,
       controls

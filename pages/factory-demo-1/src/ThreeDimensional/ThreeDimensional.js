@@ -17,7 +17,7 @@ import Sizes from './Utils/Sizes'
 import Camera from './Camera'
 import Renderer from './Renderer'
 import World from './World/World'
-import OutLinePostprocessing from './Postprocessing/OutLinePostprocessing'
+import Postprocessing from './Postprocessing/Postprocessing'
 import Css2dRender from './Css2dRender'
 
 let instance = null
@@ -44,14 +44,14 @@ export class ThreeDimensional {
     this.camera = new Camera()
     this.renderer = new Renderer()
 
-    // 后期处理
-    this.outLinePostprocessing = new OutLinePostprocessing()
+    // world
+    this.wolrd = new World()
 
     // css2drender
     this.css2dRender = new Css2dRender()
-
-    // world
-    this.wolrd = new World()
+    
+    // 后期处理
+    this.postprocessingRender = new Postprocessing()
 
     this.sizes.on('resize', () => {
       this.resize()
@@ -60,19 +60,21 @@ export class ThreeDimensional {
     this.renderer.on('timeLoop', () => {
       this.update()
     })
+
+    console.log(this.scene)
   }
 
   resize() {
     this.camera.resize()
     this.renderer.resize()
     this.css2dRender.resize()
-    this.outLinePostprocessing.resize()
+    this.postprocessingRender.resize()
   }
 
   update() {
     this.camera.update()
     // this.renderer.update()
-    this.outLinePostprocessing.update()
+    this.postprocessingRender.update()
     this.css2dRender.update()
 
     //controls

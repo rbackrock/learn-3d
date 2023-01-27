@@ -16,6 +16,12 @@ async function main() {
   const threeDimensional = new ThreeDimensional(document.querySelector('canvas.webgl'), resources)
   const wolrd = threeDimensional.wolrd
 
+  // 设置卡车标记内容
+  wolrd.controls.truck.setLabel({
+    num: '#333',
+    name: '我是一辆卡车'
+  })
+
   // 切换卡车暂停和重启
   const truckRadio = document.querySelectorAll('.truck-status')
   for (const truck of truckRadio) {
@@ -29,11 +35,15 @@ async function main() {
     })
   }
 
-  // 设置卡车标记内容
-  wolrd.controls.truck.setLabel({
-    num: '#333',
-    name: '我是一辆卡车'
-  })
+  // 切换摄像机视角
+  const cameraRadio = document.querySelectorAll('.camera')
+  for (const camera of cameraRadio) {
+    camera.addEventListener('change', evt => {
+      const radioValue = evt.target.value
+      // console.log(radioValue)
+      threeDimensional.camera.setActiveCamera(radioValue)
+    })
+  }
 }
 
 main()
