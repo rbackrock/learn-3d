@@ -44,6 +44,11 @@ async function main() {
       threeDimensional.camera.setActiveCamera(radioValue)
     })
   }
+
+  // 测试释放资源是否有问题
+  // window.setTimeout(() => {
+  //   threeDimensional.destroy()
+  // }, 3 * 1000)
 }
 
 main()

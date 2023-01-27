@@ -60,8 +60,6 @@ export class ThreeDimensional {
     this.renderer.on('timeLoop', () => {
       this.update()
     })
-
-    console.log(this.scene)
   }
 
   resize() {
@@ -99,6 +97,7 @@ export class ThreeDimensional {
       }
     })
 
+    this.postprocessingRender.destroy()
     this.camera.destroy()
     this.renderer.destroy()
 

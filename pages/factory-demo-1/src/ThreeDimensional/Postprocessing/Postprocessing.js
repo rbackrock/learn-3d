@@ -40,4 +40,8 @@ export default class Postprocessing {
     this.outlinePass.renderCamera = this.camera.activeCamera
     this.composer.render()
   }
+
+  destroy() {
+    this.outlinePass.dispose()
+  }
 }
