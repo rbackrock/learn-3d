@@ -24,6 +24,9 @@ body {
   font-size: 20px;
   background: rgba(255, 255, 255, 0.333);
 }
+.ui-layout .desc {
+  font-size: 26px;
+}
 .ui-layout .change-view-container .button {
   padding: 10px 20px;
   margin: 10px 0 0 0;
@@ -101,4 +104,18 @@ body {
   background-size: 100% 100%;
   pointer-events: all;
   cursor: pointer;
+}
+.show-click-msg-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  padding: 30px 60px;
+  transform: translate(-50%, -50%);
+  color: #00deff;
+  opacity: 1;
+  display: none;
+  background-image: url('/images/3d-label/text-box.svg#svgView(preserveAspectRatio(none))');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
 }

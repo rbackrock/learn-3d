@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
 import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
 import {
@@ -35,6 +36,7 @@ export default class World {
 
     // 绑定事件函数
     this.pointMoveHandler = this.pointMoveHandlerFunc.bind(this)
+    this.pointClickHandler = this.pointClickHandlerFunc.bind(this)
     this.bindEvent()
   }
 
@@ -213,13 +215,49 @@ export default class World {
     document.querySelector('#hover-mesh-hook').innerHTML = ''
     document.querySelector('#hover-mesh-3d-name-hook').innerHTML = ''
   }
+
+  pointClickHandlerFunc(evt) {
+    const raycaster = new THREE.Raycaster()
+    const mousePositionNDC = covertMousePositionToNDC(this.sizes.width, this.sizes.height, evt.clientX, evt.clientY)
+    raycaster.setFromCamera(mousePositionNDC, this.camera.activeCamera)
+    const intersects = raycaster.intersectObjects(this.scene.children, true)
+    let currentClickMesh = null
+
+    if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
+      currentClickMesh = this.controls.machine.mesh
+    } else if ((intersects[0]?.object?.name || '').indexOf('building') !== -1) {
+      if (intersects.length > 0) {
+        currentClickMesh = intersects[0].object
+      }
+    } else if ((intersects[0]?.object?.name || '').indexOf('forklift') !== -1) {
+      if (intersects.length > 0) {
+        currentClickMesh = intersects[0].object
+      }
+    }
+
+    if (currentClickMesh) {
+      document.querySelector('#click-box-hook').innerHTML = `当前点击的3D物体的name值为：${currentClickMesh.name}`
+      const animation = gsap.to('#click-box-hook', {
+        duration: 1.9,
+        onStart() {
+          document.querySelector('#click-box-hook').style.display = 'block'
+        },
+        onComplete() {
+          document.querySelector('#click-box-hook').style.display = 'none'
+          animation.kill()
+        }
+      })
+    }
+  }
   
   bindEvent() {
     this.canvas.addEventListener('pointermove', this.pointMoveHandler)
+    this.canvas.addEventListener('click', this.pointClickHandler)
   }
 
   removeEnent() {
     this.canvas.removeEventListener('pointermove', this.pointMoveHandler)
+    this.canvas.removeEventListener('click', this.pointClickHandler)
   }
 
   destroy() {
