@@ -1,11 +1,17 @@
 import * as THREE from 'three'
 import ThreeDimensional from './ThreeDimensional'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import gsap from 'gsap'
 
 export const cameraType = {
   STANDARD: 'standard_camera',
   TRACK_TRUCK_REAR: 'track_truck_rear_camera',
   TRACK_TRUCK_FLANK: 'track_truck_flank_camera'
+}
+
+export const viewType = {
+  STANDARD: 'standard_view',
+  MACHINE: 'machine_view'
 }
 
 export default class Camera {
@@ -23,12 +29,26 @@ export default class Camera {
       // [typeName]: {
       //   camera: camera,
       //   controls: controls
-      // },
-      [cameraType.STANDARD]: this.setDefaultCamera()
+      // }
     }
 
     // 当前活动摄像机
+    this.setDefaultCamera()
     this.setActiveCamera(cameraType.STANDARD)
+
+    // 默认相机的相机位置
+    this.viewPostionList = {
+      [viewType.STANDARD]: {
+        x: this.activeCamera.position.x,
+        y: this.activeCamera.position.y,
+        z: this.activeCamera.position.z,
+      },
+      [viewType.MACHINE]: {
+        x: 1.817,
+        y: 38.321,
+        z: -62.163
+      }
+    }
   }
 
   setDefaultCamera() {
@@ -42,7 +62,7 @@ export default class Camera {
     controls.enableDamping = true
     controls.maxPolarAngle = Math.PI / 180 * 75
 
-    return {
+    this.cameraList[cameraType.STANDARD] = {
       camera: defaultCamera,
       controls
     }
@@ -84,6 +104,43 @@ export default class Camera {
       camera: camera,
       controls
     }
+  }
+
+  changeViewPosition(type) {
+    const start = {
+      x: this.activeCamera.position.x,
+      y: this.activeCamera.position.y,
+      z: this.activeCamera.position.z,
+    }
+    let end = {}
+
+    if (type === viewType.STANDARD) {
+      end = {
+        x: this.viewPostionList[viewType.STANDARD].x,
+        y: this.viewPostionList[viewType.STANDARD].y,
+        z: this.viewPostionList[viewType.STANDARD].z,
+      }
+    } else if (type === viewType.MACHINE) {
+      end = {
+        x: this.viewPostionList[viewType.MACHINE].x,
+        y: this.viewPostionList[viewType.MACHINE].y,
+        z: this.viewPostionList[viewType.MACHINE].z,
+      }
+    }
+    
+    let animation = gsap.to(start, {
+      ...end,
+      duration: 0.9,
+      ease: 'none',
+      // repeat: 1,
+      onUpdate: () => {
+        this.activeCamera.position.set(start.x, start.y, start.z)
+      },
+      onComplete: () => {
+        animation.kill()
+        animation = null
+      }
+    })
   }
 
   destroy() {

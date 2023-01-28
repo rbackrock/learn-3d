@@ -1,9 +1,13 @@
 import load from './ThreeDimensional/resources/index'
+import {
+  cameraType,
+  viewType
+} from './ThreeDimensional/Camera'
 import ThreeDimensional from './ThreeDimensional/ThreeDimensional'
 
 const load1 = () => {
   return new Promise((resolve, reject) => {
-    resolve('模拟异步数据')
+    resolve('模拟非 3D 相关异步数据')
   })
 }
 
@@ -41,6 +45,14 @@ async function main() {
       const radioValue = evt.target.value
       // console.log(radioValue)
       threeDimensional.camera.setActiveCamera(radioValue)
+
+      if (radioValue === cameraType.STANDARD) {
+        document.querySelector('#default-view-button-hook').disabled = false
+        document.querySelector('#machine-view-button-hook').disabled = false
+      } else {
+        document.querySelector('#default-view-button-hook').disabled = true
+        document.querySelector('#machine-view-button-hook').disabled = true
+      }
     })
   }
 
@@ -57,6 +69,15 @@ async function main() {
       }
     })
   }
+
+  // 切换视角
+  document.querySelector('#default-view-button-hook').addEventListener('click', evt => {
+    threeDimensional.camera.changeViewPosition(viewType.STANDARD)
+  })
+
+  document.querySelector('#machine-view-button-hook').addEventListener('click', evt => {
+    threeDimensional.camera.changeViewPosition(viewType.MACHINE)
+  })
 
   // 测试释放资源是否有问题
   // window.setTimeout(() => {
