@@ -55,8 +55,6 @@ export default class Machine {
       return lines
     })
 
-    console.log(lineMesh);
-
     const machineObject3d = this.scene.getObjectByName('machine')
     if (machineObject3d) {
       this.mesh = lineMesh

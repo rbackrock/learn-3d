@@ -6,8 +6,17 @@ import * as THREE from 'three'
  * @param {String} includeName 包含的元素名称
  * @param {String} markSymbol 标记字符
  */
-export function hasIncludeMeshName(name, includeName, markSymbol = '#') {
+export function hasIncludeImportMeshName(name, includeName, markSymbol = '#') {
   return name.indexOf(`${includeName}${markSymbol}`) !== -1
+}
+
+export function importMeshNameNumber(name = '', markSymbol = '#') {
+  const splitArray = name.split(markSymbol)
+  if (splitArray.length > 1) {
+    return splitArray[1]
+  }
+
+  return ''
 }
 
 /**

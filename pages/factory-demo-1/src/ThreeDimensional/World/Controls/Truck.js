@@ -4,7 +4,7 @@ import {
 } from 'three/examples/jsm/renderers/CSS2DRenderer'
 import gsap from 'gsap'
 import {
-  hasIncludeMeshName
+  hasIncludeImportMeshName
 } from '../../Utils/index'
 import ThreeDimensional from '../../ThreeDimensional'
 
@@ -23,7 +23,7 @@ export default class Truck {
   run(truckPath) {
     this.mesh.traverse(child => {
       // 让轮子转
-      if (hasIncludeMeshName(child.name, 'truck-wheel')) {
+      if (hasIncludeImportMeshName(child.name, 'truck-wheel')) {
         this.wheelAnimation.push(
           gsap.to(child.rotation, {
             x: Math.PI * 2,

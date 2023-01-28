@@ -2,7 +2,8 @@ import * as THREE from 'three'
 import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
 import {
-  hasIncludeMeshName,
+  hasIncludeImportMeshName,
+  importMeshNameNumber,
   convertObject3D,
   covertMousePositionToNDC
 } from '../Utils/index'
@@ -51,7 +52,7 @@ export default class World {
 
     gltf.scene.traverse(child => {
       // 路面
-      if (hasIncludeMeshName(child.name, 'floor')) {
+      if (hasIncludeImportMeshName(child.name, 'floor')) {
         child.geometry.computeBoundingBox()
         const {
           min,
@@ -72,19 +73,12 @@ export default class World {
       }
 
       // 树
-      if (hasIncludeMeshName(child.name, 'tree')) {
-        const treeMesh = convertObject3D(child, object3d => {
-          const edges = new THREE.EdgesGeometry(object3d.geometry)
-          const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
-
-          return lines
-        })
-
-        sceneItem.push(treeMesh)
+      if (hasIncludeImportMeshName(child.name, 'tree')) {
+        sceneItem.push(child)
       }
 
       // 路灯
-      if (hasIncludeMeshName(child.name, 'street-light')) {
+      if (hasIncludeImportMeshName(child.name, 'street-light')) {
         const lightMesh = convertObject3D(child, object3d => {
           const edges = new THREE.EdgesGeometry(object3d.geometry)
           const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
@@ -96,30 +90,34 @@ export default class World {
       }
 
       // 叉车
-      if (hasIncludeMeshName(child.name, 'forklift')) {
-        const forkliftMesh = convertObject3D(child, object3d => {
-          const edges = new THREE.EdgesGeometry(object3d.geometry)
-          const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
-
-          return lines
-        })
-
-        sceneItem.push(forkliftMesh)
+      if (hasIncludeImportMeshName(child.name, 'forklift')) {
+        if (importMeshNameNumber(child.name) === '1' || importMeshNameNumber(child.name) === '3') {
+          sceneItem.push(child)
+        } else {
+          const forkliftMesh = convertObject3D(child, object3d => {
+            const edges = new THREE.EdgesGeometry(object3d.geometry)
+            const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
+  
+            return lines
+          })
+  
+          sceneItem.push(forkliftMesh)
+        }
       }
 
       // 卡车
-      if (hasIncludeMeshName(child.name, 'truck')) {
+      if (hasIncludeImportMeshName(child.name, 'truck')) {
         sceneItem.push(child)
         this.controls.truck = new Truck(child)
       }
 
       // 通过自定义点绘制运动曲线
-      if (hasIncludeMeshName(child.name, 'truck-path')) {
+      if (hasIncludeImportMeshName(child.name, 'truck-path')) {
         truckPathPoints[child.userData.index - 1] = child.position
       }
 
       // 卡车所在的路面
-      if (hasIncludeMeshName(child.name, 'road')) {
+      if (hasIncludeImportMeshName(child.name, 'road')) {
         sceneItem.push(child)
       }
 
@@ -137,12 +135,12 @@ export default class World {
       }
 
       // 添加路障
-      if (hasIncludeMeshName(child.name, 'roadblock')) {
+      if (hasIncludeImportMeshName(child.name, 'roadblock')) {
         sceneItem.push(child)
       }
 
       // 建筑
-      if (hasIncludeMeshName(child.name, 'building')) {
+      if (hasIncludeImportMeshName(child.name, 'building')) {
         sceneItem.push(child)
       }
 
@@ -175,24 +173,45 @@ export default class World {
     // hover 中央机器
     if ((intersects[0]?.object?.name || '').indexOf('machine') !== -1) {
       // 设置高亮
-      // console.log(this.controls.machine.mesh)
       this.outlinePass.selectedObjects = [this.controls.machine.mesh]
       // 显示中央机器标签
       this.controls.machine.setLabelVisible(true)
+      // 显示hover状态
+      document.querySelector('#hover-mesh-hook').innerHTML = '中央机器'
+      document.querySelector('#hover-mesh-3d-name-hook').innerHTML = this.controls.machine.mesh.name
 
       return
     }
     this.controls.machine.setLabelVisible(false)
 
+    // hover 建筑物
     if ((intersects[0]?.object?.name || '').indexOf('building') !== -1) {
       if (intersects.length > 0) {
         this.outlinePass.selectedObjects = [intersects[0].object]
+        // 显示hover状态
+        document.querySelector('#hover-mesh-hook').innerHTML = '建筑物'
+        document.querySelector('#hover-mesh-3d-name-hook').innerHTML = intersects[0].object.name
+      }
+
+      return
+    }
+
+    // hover 叉车
+    if ((intersects[0]?.object?.name || '').indexOf('forklift') !== -1) {
+      if (intersects.length > 0) {
+        this.outlinePass.selectedObjects = [intersects[0].object]
+        // 显示hover状态
+        document.querySelector('#hover-mesh-hook').innerHTML = '叉车'
+        document.querySelector('#hover-mesh-3d-name-hook').innerHTML = intersects[0].object.name
       }
 
       return
     }
 
     this.outlinePass.selectedObjects = []
+    // 显示hover状态
+    document.querySelector('#hover-mesh-hook').innerHTML = ''
+    document.querySelector('#hover-mesh-3d-name-hook').innerHTML = ''
   }
   
   bindEvent() {

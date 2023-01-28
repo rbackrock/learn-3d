@@ -1,6 +1,5 @@
 import load from './ThreeDimensional/resources/index'
 import ThreeDimensional from './ThreeDimensional/ThreeDimensional'
-import World from './ThreeDimensional/World/World'
 
 const load1 = () => {
   return new Promise((resolve, reject) => {
