@@ -15,6 +15,7 @@ import Truck from './Controls/Truck/index'
 import Machine from './Controls/Machine/index'
 import Building1 from './Controls/Building1/index'
 import Building2 from './Controls/Building2/index'
+import Forklift2 from './Controls/Forklift2/index'
 
 export default class World extends EventEmitter {
   constructor() {
@@ -33,7 +34,8 @@ export default class World extends EventEmitter {
       truck: null,
       machine: null,
       building1: null,
-      building2: null
+      building2: null,
+      forklift2: null
     }
 
     // 第三方使用变量
@@ -109,14 +111,8 @@ export default class World extends EventEmitter {
         if (importMeshNameNumber(child.name) === '1' || importMeshNameNumber(child.name) === '3') {
           sceneItem.push(child)
         } else {
-          const forkliftMesh = convertObject3D(child, object3d => {
-            const edges = new THREE.EdgesGeometry(object3d.geometry)
-            const lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1e90ff }))
-  
-            return lines
-          })
-  
-          sceneItem.push(forkliftMesh)
+          this.controls.forklift2 = new Forklift2(child)
+          sceneItem.push(this.controls.forklift2.mesh)
         }
       }
 
