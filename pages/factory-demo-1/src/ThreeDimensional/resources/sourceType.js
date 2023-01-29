@@ -4,5 +4,5 @@ export default {
   // 纹理
   TEXTURE: 'texture',
   // GLTF 格式模型
-  GLTFMODEL: 'gltfModel'
+  GLTFMODEL: 'gltfModel',
 }

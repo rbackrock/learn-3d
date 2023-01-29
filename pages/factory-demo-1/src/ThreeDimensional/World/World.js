@@ -15,6 +15,7 @@ import Truck from './Controls/Truck/index'
 import Machine from './Controls/Machine/index'
 import Building1 from './Controls/Building1/index'
 import Building2 from './Controls/Building2/index'
+import Building3 from './Controls/Building3/index'
 import Forklift2 from './Controls/Forklift2/index'
 
 export default class World extends EventEmitter {
@@ -35,6 +36,7 @@ export default class World extends EventEmitter {
       machine: null,
       building1: null,
       building2: null,
+      building3: null,
       forklift2: null
     }
 
@@ -159,6 +161,9 @@ export default class World extends EventEmitter {
         } else if (meshNameNumber === '2') {
           sceneItem.push(child)
           this.controls.building2 = new Building2(child)
+        } else if (meshNameNumber === '3') {
+          sceneItem.push(child)
+          this.controls.building3 = new Building3(child)
         } else {
           sceneItem.push(child)
         }

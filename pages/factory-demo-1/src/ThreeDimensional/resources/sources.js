@@ -19,5 +19,12 @@ export default [
     path: [
       '/factory-demo-1/models/factory-area.glb'
     ]
+  },
+  {
+    name: 'fireImage',
+    type: sourceType.TEXTURE,
+    path: [
+      '/factory-demo-1/images/fire.png'
+    ]
   }
 ]
