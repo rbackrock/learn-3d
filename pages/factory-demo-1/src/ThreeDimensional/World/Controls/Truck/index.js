@@ -5,8 +5,10 @@ import {
 import gsap from 'gsap'
 import {
   hasIncludeImportMeshName
-} from '../../Utils/index'
-import ThreeDimensional from '../../ThreeDimensional'
+} from '../../../Utils/index'
+import ThreeDimensional from '../../../ThreeDimensional'
+import vertexRadar from './shader/vertexRadar.glsl'
+import fragmentRadar from './shader/fragmentRadar.glsl'
 
 export default class Truck {
   constructor(mesh) {
@@ -17,7 +19,10 @@ export default class Truck {
 
     this.wheelAnimation = []
     this.runAnimation = null
+    this.radarAnimation = null
     this.raycaster = new THREE.Raycaster()
+
+    this.addRadarScanEffects()
   }
 
   run(truckPath) {
@@ -111,6 +116,37 @@ export default class Truck {
     }
   }
 
+  // 添加雷达扫描特效
+  addRadarScanEffects() {
+    const geometry = new THREE.PlaneGeometry(23, 23)
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      side: THREE.DoubleSide,
+      uniforms: {
+        uTime: {
+          value: 0,
+        },
+        uColor: {
+          value: new THREE.Color(0xff0000),
+        }
+      },
+      vertexShader: vertexRadar,
+      fragmentShader: fragmentRadar
+    })
+
+    const radar = new THREE.Mesh(geometry, material)
+    radar.rotation.x = -Math.PI / 2
+    radar.position.y = 0.1
+    this.mesh.add(radar)
+
+    this.radarAnimation = gsap.to(material.uniforms.uTime, {
+      value: 1,
+      duration: 1,
+      repeat: -1,
+      ease: "none",
+    })
+  }
+
   destroy() {
     if (this.wheelAnimation.length > 0) {
       for (const wheel of this.wheelAnimation) {
@@ -122,6 +158,11 @@ export default class Truck {
     if (this.runAnimation) {
       this.runAnimation.kill()
       this.runAnimation = null
+    }
+
+    if (this.radarAnimation) {
+      this.radarAnimation.kill()
+      this.radarAnimation = null
     }
   }
 }

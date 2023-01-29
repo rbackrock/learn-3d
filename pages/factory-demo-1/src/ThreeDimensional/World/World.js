@@ -11,8 +11,8 @@ import {
   covertMousePositionToNDC
 } from '../Utils/index'
 
-import Truck from './Controls/Truck'
-import Machine from './Controls/Machine'
+import Truck from './Controls/Truck/index'
+import Machine from './Controls/Machine/index'
 
 export default class World extends EventEmitter {
   constructor() {

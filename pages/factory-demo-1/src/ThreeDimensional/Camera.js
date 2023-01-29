@@ -60,7 +60,7 @@ export default class Camera {
     // 默认相机拥有的控制器
     const controls = new OrbitControls(defaultCamera, this.canvas)
     controls.enableDamping = true
-    controls.maxPolarAngle = Math.PI / 180 * 75
+    // controls.maxPolarAngle = Math.PI / 180 * 75
 
     this.cameraList[cameraType.STANDARD] = {
       camera: defaultCamera,
