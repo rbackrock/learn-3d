@@ -13,6 +13,8 @@ import {
 
 import Truck from './Controls/Truck/index'
 import Machine from './Controls/Machine/index'
+import Building1 from './Controls/Building1/index'
+import Building2 from './Controls/Building2/index'
 
 export default class World extends EventEmitter {
   constructor() {
@@ -29,7 +31,9 @@ export default class World extends EventEmitter {
     // 准备需要控制的 object3d 对象
     this.controls = {
       truck: null,
-      machine: null
+      machine: null,
+      building1: null,
+      building2: null
     }
 
     // 第三方使用变量
@@ -152,7 +156,16 @@ export default class World extends EventEmitter {
 
       // 建筑
       if (hasIncludeImportMeshName(child.name, 'building')) {
-        sceneItem.push(child)
+        const meshNameNumber = importMeshNameNumber(child.name)
+        if (meshNameNumber === '1') {
+          sceneItem.push(child)
+          this.controls.building1 = new Building1(child)
+        } else if (meshNameNumber === '2') {
+          sceneItem.push(child)
+          this.controls.building2 = new Building2(child)
+        } else {
+          sceneItem.push(child)
+        }
       }
 
       // 中央机器

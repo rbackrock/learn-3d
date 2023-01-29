@@ -118,7 +118,7 @@ export default class Truck {
 
   // 添加雷达扫描特效
   addRadarScanEffects() {
-    const geometry = new THREE.PlaneGeometry(23, 23)
+    const geometry = new THREE.PlaneGeometry(20, 20)
     const material = new THREE.ShaderMaterial({
       transparent: true,
       side: THREE.DoubleSide,
