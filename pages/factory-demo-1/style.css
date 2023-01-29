@@ -8,8 +8,11 @@
   transform: translate(-50%, -50%);
   z-index: 3;
 }
+html {
+  background: #001836;
+}
 body {
-  background: url(/public/factory-demo-1/bg/background.png);
+  background: url(http://cdn.rback.fun/factory-demo-1/background.png);
   background-position: center;
   background-size: cover;
   position: relative;

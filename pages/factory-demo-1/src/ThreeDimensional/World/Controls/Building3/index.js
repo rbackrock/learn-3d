@@ -33,8 +33,6 @@ export default class Building3 {
     })
 
     this.mesh.add(sprite)
-
-    console.log(this.mesh)
   }
 
   destroy() {

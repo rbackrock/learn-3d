@@ -6,7 +6,7 @@ import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
 import {
   hasIncludeImportMeshName,
-  importMeshNameNumber,
+  importMeshLastName,
   convertObject3D,
   covertMousePositionToNDC
 } from '../Utils/index'
@@ -17,6 +17,7 @@ import Building1 from './Controls/Building1/index'
 import Building2 from './Controls/Building2/index'
 import Building3 from './Controls/Building3/index'
 import Forklift2 from './Controls/Forklift2/index'
+import FlyLine from './Controls/FlyLine'
 
 export default class World extends EventEmitter {
   constructor() {
@@ -37,7 +38,8 @@ export default class World extends EventEmitter {
       building1: null,
       building2: null,
       building3: null,
-      forklift2: null
+      forklift2: null,
+      flyLine: null
     }
 
     // 第三方使用变量
@@ -62,7 +64,12 @@ export default class World extends EventEmitter {
 
     const gltf = this.resources.gltfModel
     const sceneItem = []
+
+    // 卡车路径点
     const truckPathPoints = []
+
+    // 飞线需要的三个点
+    const flyLineVector3List = []
 
     // 添加额外摄像机
     for (const camera of gltf.cameras) {
@@ -110,7 +117,7 @@ export default class World extends EventEmitter {
 
       // 叉车
       if (hasIncludeImportMeshName(child.name, 'forklift')) {
-        if (importMeshNameNumber(child.name) === '1' || importMeshNameNumber(child.name) === '3') {
+        if (importMeshLastName(child.name) === '1' || importMeshLastName(child.name) === '3') {
           sceneItem.push(child)
         } else {
           this.controls.forklift2 = new Forklift2(child)
@@ -134,6 +141,18 @@ export default class World extends EventEmitter {
         sceneItem.push(child)
       }
 
+      // 飞线
+      if (hasIncludeImportMeshName(child.name, 'fly-line')) {
+        const meshLastName = importMeshLastName(child.name)
+        if (meshLastName === 'start') {
+          flyLineVector3List[0] = child.position.clone()
+        } else if (meshLastName === 'peak') {
+          flyLineVector3List[1] = child.position.clone()
+        } else if (meshLastName === 'end') {
+          flyLineVector3List[2] = child.position.clone()
+        }
+      }
+
       // 光
       if (child.name === 'sunlight1') {
         sceneItem.push(child)
@@ -154,7 +173,7 @@ export default class World extends EventEmitter {
 
       // 建筑
       if (hasIncludeImportMeshName(child.name, 'building')) {
-        const meshNameNumber = importMeshNameNumber(child.name)
+        const meshNameNumber = importMeshLastName(child.name)
         if (meshNameNumber === '1') {
           sceneItem.push(child)
           this.controls.building1 = new Building1(child)
@@ -183,6 +202,10 @@ export default class World extends EventEmitter {
 
     // 添加自定义点连成的曲线
     this.truckPath = new THREE.CatmullRomCurve3(truckPathPoints, true, 'catmullrom', 0.3)
+
+    // 创建飞线
+    this.controls.flyLine = new FlyLine(flyLineVector3List)
+    this.scene.add(this.controls.flyLine.create())
   }
 
   run() {

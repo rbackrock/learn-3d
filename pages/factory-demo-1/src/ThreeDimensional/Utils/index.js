@@ -10,7 +10,12 @@ export function hasIncludeImportMeshName(name, includeName, markSymbol = '#') {
   return name.indexOf(`${includeName}${markSymbol}`) !== -1
 }
 
-export function importMeshNameNumber(name = '', markSymbol = '#') {
+/**
+ * 获取 Blender 中模型标记字符之后的值
+ * @param {String} name 当前模型元素名称 
+ * @param {String} markSymbol 标记字符
+ */
+export function importMeshLastName(name = '', markSymbol = '#') {
   const splitArray = name.split(markSymbol)
   if (splitArray.length > 1) {
     return splitArray[1]
