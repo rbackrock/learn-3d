@@ -1,4 +1,6 @@
 import * as THREE from 'three'
+
+import EventEmitter from '../Utils/EventEmitter'
 import gsap from 'gsap'
 import ThreeDimensional from '../ThreeDimensional'
 import Environment from './Environment'
@@ -12,8 +14,10 @@ import {
 import Truck from './Controls/Truck'
 import Machine from './Controls/Machine'
 
-export default class World {
+export default class World extends EventEmitter {
   constructor() {
+    super()
+
     this.threeDimensional = new ThreeDimensional()
     this.canvas = this.threeDimensional.canvas
     this.camera = this.threeDimensional.camera
@@ -38,6 +42,11 @@ export default class World {
     this.pointMoveHandler = this.pointMoveHandler.bind(this)
     this.pointClickHandler = this.pointClickHandler.bind(this)
     this.bindEvent()
+
+    // 接收 destroy 事件
+    this.on('destroy', () => {
+      this.destroy()
+    })
   }
 
   createScene() {
@@ -264,5 +273,11 @@ export default class World {
 
   destroy() {
     this.removeEvent()
+
+    // 删除并且置空控制物体的 gsap 动画对象让垃圾回收，或者其他事件对象
+    // ES 类规范没有接口特性，需要清除 gsap 动画需要自己记得实现 destroy 方法
+    for (const wolrdControlsKey in this.controls) {
+      this.controls[wolrdControlsKey].destroy && this.controls[wolrdControlsKey].destroy()
+    }
   }
 }
