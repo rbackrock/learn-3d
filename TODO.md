@@ -1,6 +1,3 @@
---- # 建筑物纯色模型颜色渐变 - building#1, building#2
---- # 建筑物从下往上扫描特效 - building#1, building#2
-# 光圈扩散 - building#3
-# 两点之间飞线 - building#4, building#5
---- # 光墙效果 - forklift#2
---- # 雷达扫描效果 - machine, truck#1
+# 用 Canvas 画展示界面形成图片当作纹理贴在 PlaneGeometry 平面集合体是否可行，如果可行如何解决分辨率适配问题
+# 多种着色器效果是否能叠加
+# 已经有贴图的模型能不能添加着色器效果
