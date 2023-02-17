@@ -13,8 +13,6 @@ const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath('/draco/')
 gltfLoader.setDRACOLoader(dracoLoader)
 
-
-
 const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager)
 
 // const gui = new dat.GUI()
