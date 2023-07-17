@@ -32,8 +32,8 @@ gltfLoader.setDRACOLoader(dracoLoader)
 /**
  * 纹理
  */
-// const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
-const bakedTexture = textureLoader.load('http://cdn.rback.fun/learn-bake/bake.jpg')
+const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
+// const bakedTexture = textureLoader.load('http://cdn.rback.fun/learn-bake/bake.jpg')
 // 蛋疼，threejs 向上是 Y 坐标，blender 是 z 坐标，烘焙的纹理需要修正
 bakedTexture.flipY = false
 bakedTexture.encoding = THREE.sRGBEncoding
@@ -238,8 +238,8 @@ const portalLightMaterial = new THREE.ShaderMaterial({
   }
 })
 
-// gltfLoader.load('/learn-bake/learn-bake1.glb', gltf => {
-gltfLoader.load('http://cdn.rback.fun/learn-bake/learn-bake-fix.glb', gltf => {
+gltfLoader.load('/learn-bake/learn-bake-fix.glb', gltf => {
+// gltfLoader.load('http://cdn.rback.fun/learn-bake/learn-bake-fix.glb', gltf => {
     gltf.scene.traverse(child => {
       child.material = bakedMaterial
 

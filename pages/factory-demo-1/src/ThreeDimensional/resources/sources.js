@@ -17,8 +17,8 @@ export default [
     name: 'gltfModel',
     type: sourceType.GLTFMODEL,
     path: [
-      // '/factory-demo-1/models/factory-area.glb'
-      'http://cdn.rback.fun/factory-demo-1/factory-area.glb'
+      '/factory-demo-1/models/factory-area.glb'
+      // 'http://cdn.rback.fun/factory-demo-1/factory-area.glb'
     ]
   },
   {
