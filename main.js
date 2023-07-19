@@ -43,6 +43,10 @@ const menus = [
     name: '工厂 Demo',
     url: '/pages/factory-demo-1/index.html'
   },
+  {
+    name: 'Cnavas 绘制纹理',
+    url: '/pages/canvas-texture/index.html'
+  },
 ]
 
 for (let i = 0; i < menus.length; i++) {
