@@ -47,6 +47,10 @@ const menus = [
     name: 'Cnavas 绘制纹理',
     url: '/pages/canvas-texture/index.html'
   },
+  {
+    name: '着色器测试',
+    url: '/pages/shader-test/index.html'
+  },
 ]
 
 for (let i = 0; i < menus.length; i++) {

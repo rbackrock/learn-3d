@@ -23,11 +23,7 @@ const points = new THREE.Points(sphereGeometry, pointMaterial)
 
 scene.add(points)
 
-function render() {
+renderer.setAnimationLoop(() => {
   renderer.render(scene, camera)
   controls.update()
-
-  requestAnimationFrame(render)
-}
-
-requestAnimationFrame(render)
+})

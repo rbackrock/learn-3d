@@ -19,6 +19,7 @@ export default defineConfig({
         'conveyor-belt': resolve(__dirname, 'pages/conveyor-belt/index.html'),
         'factory-demo-1': resolve(__dirname, 'pages/factory-demo-1/index.html'),
         'canvas-texture': resolve(__dirname, 'pages/canvas-texture/index.html'),
+        'shader-test': resolve(__dirname, 'pages/shader-test/index.html'),
       }
     }
   }

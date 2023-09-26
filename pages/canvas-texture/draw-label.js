@@ -52,18 +52,18 @@ async function draw() {
   canvasCtx.save()
   canvasCtx.font = 'bold 30px Microsoft YaHei'
   canvasCtx.fillStyle = '#513a35'
-  canvasCtx.fillText('雪茄烟管养中心', 70, 60)
+  canvasCtx.fillText('测试文字', 70, 60)
   canvasCtx.restore()
 
   // 画编号
   canvasCtx.save()
-  canvasCtx.font = 'bold 30px Microsoft YaHei'
+  canvasCtx.font = 'bold 56px Microsoft YaHei'
   canvasCtx.fillStyle = '#513a35'
-  canvasCtx.fillText('NO.XLY-33-02', 40, 160)
+  canvasCtx.fillText('NO.XLY-33-02', 38, 160)
   canvasCtx.restore()
 
   // 画二维码
-  await loadQrcode(canvasCtx)
+  // await loadQrcode(canvasCtx)
 
   return offscreenCanvas.toDataURL()
 }
