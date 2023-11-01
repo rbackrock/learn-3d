@@ -51,6 +51,10 @@ const menus = [
     name: '着色器测试',
     url: '/pages/shader-test/index.html'
   },
+  {
+    name: 'babylon',
+    url: '/pages/example-babylon/index.html'
+  }
 ]
 
 for (let i = 0; i < menus.length; i++) {
