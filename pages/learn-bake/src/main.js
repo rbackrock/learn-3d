@@ -1,7 +1,9 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+// import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 
 /**
  * 设备宽高
@@ -25,6 +27,7 @@ const textureLoader = new THREE.TextureLoader(loadingManager)
 // 模型压缩加载器
 const dracoLoader = new DRACOLoader(loadingManager)
 dracoLoader.setDecoderPath('/draco/')
+dracoLoader.preload()
 // 模型加载器
 const gltfLoader = new GLTFLoader(loadingManager)
 gltfLoader.setDRACOLoader(dracoLoader)
@@ -36,7 +39,7 @@ const bakedTexture = textureLoader.load('/learn-bake/bake.jpg')
 // const bakedTexture = textureLoader.load('http://cdn.rback.fun/learn-bake/bake.jpg')
 // 蛋疼，threejs 向上是 Y 坐标，blender 是 z 坐标，烘焙的纹理需要修正
 bakedTexture.flipY = false
-bakedTexture.encoding = THREE.sRGBEncoding
+bakedTexture.colorSpace = THREE.SRGBColorSpace
 
 /**
  * 烘焙材质
@@ -269,7 +272,8 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.outputEncoding = THREE.sRGBEncoding
+// renderer.outputEncoding = THREE.sRGBEncoding
+renderer.outputColorSpace = THREE.SRGBColorSpace
 
 /**
  * 大概比划横屏或者竖屏时相机的位置

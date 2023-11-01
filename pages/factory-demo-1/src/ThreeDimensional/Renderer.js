@@ -22,9 +22,10 @@ export default class Renderer extends EventEmitter {
       // logarithmicDepthBuffer: true,
       alpha: true
     })
-    this.instance.physicallyCorrectLights = true
-    this.instance.outputEncoding = THREE.sRGBEncoding
-    this.instance.toneMapping = THREE.CineonToneMapping
+    // this.instance.physicallyCorrectLights = true
+    // this.instance.outputEncoding = THREE.sRGBEncoding
+    // this.instance.outputEncoding = THREE.sRGBEncoding
+    this.instance.outputColorSpace = THREE.SRGBColorSpace
     this.instance.toneMappingExposure = 1.75
     // this.instance.shadowMap.enabled = true
     // this.instance.shadowMap.type = THREE.PCFSoftShadowMap

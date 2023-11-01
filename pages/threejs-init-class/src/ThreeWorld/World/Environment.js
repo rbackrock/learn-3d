@@ -12,7 +12,7 @@ class Environment {
 
   setEnvironmentMap() {
     const environmentMap = this.resources.items.environmentMapTexture
-    environmentMap.encoding = THREE.sRGBEncoding
+    environmentMap.colorSpace = THREE.SRGBColorSpace
 
     this.scene.background = environmentMap
     this.scene.environment = environmentMap

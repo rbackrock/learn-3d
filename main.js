@@ -54,6 +54,10 @@ const menus = [
   {
     name: 'babylon',
     url: '/pages/example-babylon/index.html'
+  },
+  {
+    name: '实验',
+    url: '/pages/experiment/index.html'
   }
 ]
 

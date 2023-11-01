@@ -42,7 +42,7 @@ const environmentMap = cubeTextureLoader.load([
     '/exercise1/textures/environmentMaps/0/nz.jpg'
 ])
 
-environmentMap.encoding = THREE.sRGBEncoding
+environmentMap.colorSpace = THREE.SRGBColorSpace
 
 scene.background = environmentMap
 scene.environment = environmentMap
@@ -105,8 +105,9 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true
 })
-renderer.physicallyCorrectLights = true
-renderer.outputEncoding = THREE.sRGBEncoding
+// renderer.physicallyCorrectLights = true
+// renderer.outputEncoding = T÷HREE.sRGBEncoding
+renderer.outputColorSpace = THREE.SRGBColorSpace
 renderer.toneMapping = THREE.ReinhardToneMapping
 renderer.toneMappingExposure = 1.9
 renderer.shadowMap.enabled = true

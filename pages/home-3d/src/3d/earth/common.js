@@ -1,4 +1,4 @@
-import { CatmullRomCurve3, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneBufferGeometry, Texture, TubeGeometry, Vector3 } from "three";
+import { CatmullRomCurve3, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Texture, TubeGeometry, Vector3 } from "three";
 
 
 /**
@@ -22,7 +22,7 @@ export const lon2xyz = (R, longitude, latitude) => {
 
 // 创建波动光圈
 export const createWaveMesh = (options) => {
-  const geometry = new PlaneBufferGeometry(1, 1); //默认在XOY平面上
+  const geometry = new PlaneGeometry(1, 1); //默认在XOY平面上
   const texture = options.textures.aperture;
 
   const material = new MeshBasicMaterial({
@@ -49,7 +49,7 @@ export const createWaveMesh = (options) => {
 // 创建柱状
 export const createLightPillar = (options) => {
   const height = options.radius * 0.3;
-  const geometry = new PlaneBufferGeometry(options.radius * 0.05, height);
+  const geometry = new PlaneGeometry(options.radius * 0.05, height);
   geometry.rotateX(Math.PI / 2);
   geometry.translate(0, 0, height / 2);
   const material = new MeshBasicMaterial({
@@ -82,7 +82,7 @@ export const createLightPillar = (options) => {
 // 光柱底座矩形平面
 export const createPointMesh = (options) => {
 
-  const geometry = new PlaneBufferGeometry(1, 1); //默认在XOY平面上
+  const geometry = new PlaneGeometry(1, 1); //默认在XOY平面上
   const mesh = new Mesh(geometry, options.material);
   // 经纬度转球面坐标
   const coord = lon2xyz(options.radius * 1.001, options.lon, options.lat);

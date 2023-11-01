@@ -25,7 +25,7 @@ export default class Floor
         this.textures = {}
 
         this.textures.color = this.resources.items.grassColorTexture
-        this.textures.color.encoding = THREE.sRGBEncoding
+        this.textures.color.colorSpace = THREE.SRGBColorSpace
         this.textures.color.repeat.set(1.5, 1.5)
         this.textures.color.wrapS = THREE.RepeatWrapping
         this.textures.color.wrapT = THREE.RepeatWrapping

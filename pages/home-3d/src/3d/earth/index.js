@@ -2,7 +2,7 @@ import {
   BufferAttribute, BufferGeometry, Color, DoubleSide, Group, Material, Mesh, MeshBasicMaterial, NormalBlending,
   Object3D,
   Points, PointsMaterial, ShaderMaterial,
-  SphereBufferGeometry, Sprite, SpriteMaterial, Texture, TextureLoader, Vector3
+  SphereGeometry, Sprite, SpriteMaterial, Texture, TextureLoader, Vector3
 } from "three";
 
 // import html2canvas from "html2canvas";
@@ -93,13 +93,13 @@ export default class Earth {
   }
 
   createEarth() {
-    const earth_geometry = new SphereBufferGeometry(
+    const earth_geometry = new SphereGeometry(
       this.options.earth.radius,
       50,
       50
     );
 
-    const earth_border = new SphereBufferGeometry(
+    const earth_border = new SphereGeometry(
       this.options.earth.radius + 10,
       60,
       60
@@ -246,7 +246,7 @@ export default class Earth {
       transparent: true,
       depthWrite: false,
     });
-    const sphere = new SphereBufferGeometry(
+    const sphere = new SphereGeometry(
       this.options.earth.radius + 0,
       50,
       50
@@ -374,21 +374,21 @@ export default class Earth {
      * 旋转的球
      */
     const ball = new Mesh(
-      new SphereBufferGeometry(this.options.satellite.size, 32, 32),
+      new SphereGeometry(this.options.satellite.size, 32, 32),
       new MeshBasicMaterial({
         color: "#e0b187", // 745F4D
       })
     );
 
     const ball2 = new Mesh(
-      new SphereBufferGeometry(this.options.satellite.size, 32, 32),
+      new SphereGeometry(this.options.satellite.size, 32, 32),
       new MeshBasicMaterial({
         color: "#628fbb", // 324A62
       })
     );
 
     const ball3 = new Mesh(
-      new SphereBufferGeometry(this.options.satellite.size, 32, 32),
+      new SphereGeometry(this.options.satellite.size, 32, 32),
       new MeshBasicMaterial({
         color: "#806bdf", //6D5AC4
       })
