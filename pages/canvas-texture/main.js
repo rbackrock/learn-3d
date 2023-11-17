@@ -25,7 +25,7 @@ drawLabel().then(data => {
     map: texture
   })
   const plane = new THREE.Mesh(geometry, material)
-  scene.add(plane);
+  scene.add(plane)
 })
 
 function render() {
