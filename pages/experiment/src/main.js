@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { MeshSurfaceSampler } from "three/addons/math/MeshSurfaceSampler.js";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const renderer = new THREE.WebGLRenderer()
@@ -15,13 +16,40 @@ const axesHelper = new THREE.AxesHelper(5);
 
 scene.add(axesHelper)
 
-const sphereGeometry = new THREE.SphereGeometry(3, 20, 20)
-const pointMaterial = new THREE.PointsMaterial({
-  size: 0.1
-})
-const points = new THREE.Points(sphereGeometry, pointMaterial)
+// ---------------------------------
+function pointification(mesh, amount){
+  let mss = new MeshSurfaceSampler(mesh).build();
+  let pointsData = [];
+  let v = new THREE.Vector3();
+  for(let i = 0; i < amount; i++){
+    mss.sample(v);
+    v.toArray(pointsData, i * 3);
+  }
+  return new THREE.Float32BufferAttribute(pointsData, 3);
+}
 
-scene.add(points)
+const cube = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({
+    color: 0xffffff
+  })
+)
+
+let amount = 50000
+let pointGeometry = new THREE.BufferGeometry()
+pointGeometry.setAttribute("position", pointification(cube, amount))
+
+scene.add(
+  new THREE.Points(
+    pointGeometry,
+    new THREE.PointsMaterial({
+      color: 0x44ffff,
+      size: 0.003
+    })
+  )
+)
+
+// ---------------------------------
 
 renderer.setAnimationLoop(() => {
   renderer.render(scene, camera)
