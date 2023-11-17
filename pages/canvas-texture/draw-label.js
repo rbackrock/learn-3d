@@ -52,7 +52,7 @@ async function draw() {
   canvasCtx.save()
   canvasCtx.font = 'bold 30px Microsoft YaHei'
   canvasCtx.fillStyle = '#513a35'
-  canvasCtx.fillText('测试文字', 70, 60)
+  canvasCtx.fillText('雪茄烟管养中心', 70, 60)
   canvasCtx.restore()
 
   // 画编号
