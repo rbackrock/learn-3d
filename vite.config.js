@@ -20,7 +20,8 @@ export default defineConfig({
         'factory-demo-1': resolve(__dirname, 'pages/factory-demo-1/index.html'),
         'canvas-texture': resolve(__dirname, 'pages/canvas-texture/index.html'),
         'shader-test': resolve(__dirname, 'pages/shader-test/index.html'),
-        'experiment': resolve(__dirname, 'pages/experiment/index.html')
+        'experiment': resolve(__dirname, 'pages/experiment/index.html'),
+        'particle': resolve(__dirname, 'pages/particle/index.html')
       }
     }
   }

@@ -52,8 +52,8 @@ const menus = [
     url: '/pages/shader-test/index.html'
   },
   {
-    name: 'babylon',
-    url: '/pages/example-babylon/index.html'
+    name: '粒子',
+    url: '/pages/particle/index.html'
   },
   {
     name: '实验',
