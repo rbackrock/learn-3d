@@ -48,8 +48,8 @@ const menus = [
     url: '/pages/canvas-texture/index.html'
   },
   {
-    name: '着色器测试',
-    url: '/pages/shader-test/index.html'
+    name: '着色器',
+    url: '/pages/shader/index.html'
   },
   {
     name: '粒子',

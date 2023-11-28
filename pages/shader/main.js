@@ -1,8 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { createMultiMaterialObject } from 'three/examples/jsm/utils/SceneUtils'
-import vertex from './exmaple1/vertex.glsl'
-import fragment from './exmaple1/fragment.glsl'
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
